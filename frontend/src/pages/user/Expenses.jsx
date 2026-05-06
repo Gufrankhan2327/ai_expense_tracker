@@ -19,7 +19,7 @@ export default function Expenses() {
   // 🔹 Fetch Expenses
   const fetchExpenses = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/expenses", {
+      const res = await axios.get("https://ai-expense-tracker-backend-rvb8.onrender.com/api/expenses", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setExpenses(res.data || []);
@@ -40,7 +40,7 @@ export default function Expenses() {
       if (editId) {
         // ✏️ UPDATE
         const res = await axios.put(
-          `http://localhost:5000/api/expenses/${editId}`,
+          `https://ai-expense-tracker-backend-rvb8.onrender.com/api/expenses/${editId}`,
           form,
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -53,7 +53,7 @@ export default function Expenses() {
       } else {
         // ➕ ADD
         const res = await axios.post(
-          "http://localhost:5000/api/expenses/add",
+          "https://ai-expense-tracker-backend-rvb8.onrender.com/api/expenses/add",
           form,
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -74,7 +74,7 @@ export default function Expenses() {
     if (!window.confirm("Delete this expense?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/expenses/${id}`, {
+      await axios.delete(`https://ai-expense-tracker-backend-rvb8.onrender.com/api/expenses/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

@@ -11,7 +11,7 @@ export default function Reports() {
   }, []);
 
   const fetchData = async () => {
-    const res = await axios.get("http://localhost:5000/api/expenses", {
+    const res = await axios.get("https://ai-expense-tracker-backend-rvb8.onrender.com/api/expenses", {
       headers: { Authorization: `Bearer ${token}` },
     });
     setExpenses(res.data || []);

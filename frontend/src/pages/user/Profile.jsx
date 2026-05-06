@@ -21,7 +21,7 @@ export default function Profile() {
   // 🔹 Fetch Profile
   const fetchProfile = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/profile", {
+      const res = await axios.get("https://ai-expense-tracker-backend-rvb8.onrender.com/api/profile", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -46,7 +46,7 @@ export default function Profile() {
       setLoading(true);
 
       const res = await axios.put(
-        "http://localhost:5000/api/profile",
+        "https://ai-expense-tracker-backend-rvb8.onrender.com/api/profile",
         { name },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -67,7 +67,7 @@ export default function Profile() {
   const handlePassword = async () => {
     try {
       await axios.put(
-        "http://localhost:5000/api/profile/password",
+        "https://ai-expense-tracker-backend-rvb8.onrender.com/api/profile/password",
         passwords,
         {
           headers: { Authorization: `Bearer ${token}` },
