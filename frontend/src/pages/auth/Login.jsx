@@ -5,40 +5,84 @@ import { loginUser } from "../../services/authService";
 
 export default function Login() {
   const { login } = useContext(AuthContext);
+
   const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
 
   const [form, setForm] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
+  // 🔹 Input Change
   const handleChange = (e) => {
     setForm({
       ...form,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
- const handleLogin = async () => {
-  try {
-    const res = await loginUser(form);
+  // 🔥 Login
+  const handleLogin = async () => {
+    try {
+      setLoading(true);
 
-    console.log("LOGIN RESPONSE:", res.data);
+      // Validation
+      if (!form.email || !form.password) {
+        alert("Please fill all fields");
+        return;
+      }
 
-    // ✅ SAVE TOKEN
-    localStorage.setItem("token", res.data.token);
+      const res = await loginUser(form);
 
-    // ✅ SAVE USER
-    localStorage.setItem("user", JSON.stringify(res.data));
+      console.log("LOGIN RESPONSE:", res.data);
 
-    // Redirect
-    if (res.data.role === "admin") navigate("/admin");
-    else navigate("/user");
+      // ✅ Save Token
+      localStorage.setItem("token", res.data.token);
 
-  } catch (err) {
-    alert("Invalid email or password");
-  }
-};
+      // ✅ Save User
+      localStorage.setItem(
+        "user",
+        JSON.stringify(res.data)
+      );
+
+      // ✅ Context Login
+      if (login) {
+        login(res.data);
+      }
+
+      // ✅ Redirect
+      if (res.data.role === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/user");
+      }
+
+    } catch (err) {
+
+      console.error(
+        "LOGIN ERROR:",
+        err.response?.data || err.message
+      );
+
+      alert(
+        err.response?.data?.msg ||
+        err.response?.data?.error ||
+        "Invalid email or password"
+      );
+
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // 🔥 Enter Key Support
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleLogin();
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0f172a] to-[#1e293b]">

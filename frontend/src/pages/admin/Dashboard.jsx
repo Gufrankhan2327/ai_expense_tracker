@@ -1,8 +1,7 @@
-
-import Card from "../../components/ui/Card";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getAnalytics } from "../../services/userService";
-import BarChart from "../../components/charts/BarChart";
+import AdminBarChart from "../../components/charts/BarChart";
+import Card from "../../components/ui/Card";
 
 export default function AdminDashboard() {
   const [analytics, setAnalytics] = useState({});
@@ -12,52 +11,183 @@ export default function AdminDashboard() {
   }, []);
 
   const fetchAnalytics = async () => {
-    const res = await getAnalytics();
-    setAnalytics(res.data);
+    try {
+      const res = await getAnalytics();
+      setAnalytics(res.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  const chartData = Object.entries(analytics.categories || {}).map(
-    ([key, value]) => ({
-      name: key,
-      value,
-    })
-  );
+  // 📊 Chart Data
+  const chartData = Object.entries(
+    analytics.categories || {}
+  ).map(([key, value]) => ({
+    name: key,
+    users: value,
+  }));
+
+  // 🏆 Top Category
+  const topCategory = useMemo(() => {
+    if (!chartData.length) return "None";
+
+    return chartData.reduce((a, b) =>
+      a.users > b.users ? a : b
+    ).name;
+  }, [chartData]);
 
   return (
-    <div className="text-white">
+    <div className="text-white p-6">
 
-      {/* Header */}
-      <div className="mb-6">
-        <h1 className="text-2xl sm:text-3xl font-bold">
-          Admin Dashboard
-        </h1>
-      </div>
+      {/* HEADER */}
+      <div className="flex justify-between items-center mb-8">
 
-      {/* Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <Card title="Users" value={analytics.totalUsers || 0} icon="" />
-        <Card title="Active" value={analytics.activeUsers || 0} icon="" />
-        <Card title="Expenses" value={`₹${analytics.totalExpenses || 0}`} icon="" />
-        <Card title="Status" value="Live" icon="" />
-      </div>
+        <div>
+          <h2 className="text-5xl font-bold  ">
+            Admin Dashboard
+          </h2>
 
-      {/* Analytics */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-
-        <Card title="📊 Category Analysis">
-          {chartData.length === 0 ? (
-            <p className="text-gray-400 text-center py-10">No data</p>
-          ) : (
-            <BarChart data={chartData} />
-          )}
-        </Card>
-
-        <Card className="p-5">
-          <h2 className="mb-2 font-semibold text-lg">AI Insights</h2>
-          <p className="text-gray-300">
-            {analytics.insights?.message || "No insights available"}
+          <p className="text-gray-400 mt-2">
+            Monitor platform analytics & expenses
           </p>
-        </Card>
+        </div>
+
+        <div className="
+          bg-green-500/10
+          border border-green-500/20
+          px-5 py-3
+          rounded-2xl
+        ">
+          <p className="text-green-400 font-semibold">
+            ● System Live
+          </p>
+        </div>
+
+      </div>
+
+      {/* STATS */}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+
+        <Card
+          title="Users"
+          value={analytics.totalUsers || 0}
+          icon=""
+        />
+
+        <Card
+          title="Active"
+          value={analytics.activeUsers || 0}
+          icon=""
+        />
+
+        <Card
+          title="Expenses"
+          value={`₹${analytics.totalExpenses || 0}`}
+          icon=""
+        />
+
+        <Card
+          title="Top Category"
+          value={topCategory}
+          icon=""
+        />
+
+      </div>
+
+      {/* MAIN SECTION */}
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 items-stretch">
+
+        {/* CHART */}
+        <div className="xl:col-span-2">
+
+          <AdminBarChart data={chartData} />
+
+        </div>
+
+        {/* INSIGHTS */}
+        <div className="
+          bg-white/10
+          backdrop-blur-xl
+          border border-white/10
+          rounded-3xl
+          p-6
+          flex
+          flex-col
+          justify-between
+          h-full
+        ">
+
+          <h2 className="text-3xl font-bold mb-2">
+            AI Insights
+          </h2>
+
+          <p className="text-gray-400 mb-6">
+            Smart analytics insights
+          </p>
+
+          <div className="space-y-4">
+
+            <div className="
+              bg-white/5
+              border border-white/10
+              rounded-2xl
+              p-4
+            ">
+              <p className="text-lg">
+                Platform spending is stable
+              </p>
+            </div>
+
+            <div className="
+              bg-white/5
+              border border-white/10
+              rounded-2xl
+              p-4
+            ">
+              <p className="text-lg">
+                Highest category:
+                <span className="font-bold">
+                  {" "} {topCategory}
+                </span>
+              </p>
+            </div>
+
+            <div className="
+              bg-white/5
+              border border-white/10
+              rounded-2xl
+              p-4
+            ">
+              <p className="text-lg">
+                Active users:
+                <span className="font-bold">
+                  {" "} {analytics.activeUsers || 0}
+                </span>
+              </p>
+            </div>
+
+            <div className="
+              bg-gradient-to-r
+              from-indigo-500/20
+              to-purple-500/20
+              border border-indigo-500/20
+              rounded-2xl
+              p-5
+            ">
+
+              <h3 className="text-xl font-bold mb-2">
+                Platform Status
+              </h3>
+
+              <p className="text-gray-300">
+                Real-time analytics system active.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 

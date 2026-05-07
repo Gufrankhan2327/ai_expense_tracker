@@ -25,8 +25,10 @@ export default function Profile() {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      setUser(res.data);
-      setName(res.data.name);
+      if (res.data) {
+    setUser(res.data);
+    setName(res.data.name || "");
+}
     } catch (err) {
       console.error(err);
     }

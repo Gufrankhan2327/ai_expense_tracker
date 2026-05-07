@@ -12,16 +12,30 @@ export default function Analytics() {
     fetchAnalytics();
   }, []);
 
-  const fetchAnalytics = async () => {
-    try {
-      const res = await axios.get("https://ai-expense-tracker-backend-rvb8.onrender.com/api/expenses", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setData(res.data || []);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+ const fetchAnalytics = async () => {
+
+  try {
+
+    const res = await axios.get(
+      "https://ai-expense-tracker-backend-rvb8.onrender.com/api/admin/analytics",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    console.log("ADMIN:", res.data);
+
+    setData(res.data.expenses || []);
+
+  } catch (err) {
+
+    console.log(err);
+
+  }
+
+};
 
   // 📊 Category Data
   const categoryMap = {};

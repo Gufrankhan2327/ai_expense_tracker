@@ -66,7 +66,12 @@ export const getAnalytics = async (req, res) => {
             totalUsers,
             activeUsers,
             totalExpenses,
+
+            // IMPORTANT
+            expenses,
+
             categories: categoryData,
+
             insights
         });
 

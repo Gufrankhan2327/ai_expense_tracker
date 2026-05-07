@@ -36,7 +36,7 @@ export default function Users() {
       {/* 🔹 Header */}
       <div className="flex flex-col md:flex-row justify-between gap-4 mb-6">
         <h1 className="text-2xl md:text-3xl font-bold">
-          👥 User Management
+          👥 Manage Users
         </h1>
 
         <input
