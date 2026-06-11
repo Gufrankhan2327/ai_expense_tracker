@@ -75,8 +75,8 @@ export default function AdminDashboard() {
         />
 
         <Card
-          title="Active"
-          value={analytics.activeUsers || 0}
+          title="Transactions"
+          value={analytics.totalTransactions || 0}
           icon=""
         />
 
@@ -159,9 +159,9 @@ export default function AdminDashboard() {
               p-4
             ">
               <p className="text-lg">
-                Active users:
+                Total Transactions:
                 <span className="font-bold">
-                  {" "} {analytics.activeUsers || 0}
+                  {" "} {analytics.totalTransactions || 0}
                 </span>
               </p>
             </div>

@@ -9,7 +9,8 @@ import AdminDashboard from "../pages/admin/Dashboard";
 
 
 import Users from "../pages/admin/Users";
-import Analytics from "../pages/admin/Analytics";
+import UserAnalytics from "../pages/user/UserAnalytics";
+import AdminAnalytics from "../pages/admin/AdminAnalytics";
 import Reports from "../pages/admin/Reports";
 import Settings from "../pages/admin/Settings";
 import Expenses from "../pages/user/Expenses";
@@ -47,7 +48,7 @@ export default function AppRoutes() {
         <Route index element={<UserDashboard />} />
         <Route path="expenses" element={<Expenses />} />
         <Route path="transactions" element={<Transactions />} />
-        <Route path="analytics" element={<Analytics />} />
+        <Route path="analytics" element={<UserAnalytics />} />
         <Route path="budget" element={<Budget />} />
         <Route path="profile" element={<Profile />} />
       </Route>
@@ -65,7 +66,7 @@ export default function AppRoutes() {
       >
         <Route index element={<AdminDashboard />} />
         <Route path="users" element={<Users />} />
-        <Route path="analytics" element={<Analytics />} />
+        <Route path="analytics" element={<AdminAnalytics />} />
         <Route path="reports" element={<Reports />} />
         <Route path="settings" element={<Settings />} />
       </Route>

@@ -1,16 +1,14 @@
-// app.js
-const express = require("express");
-const cors = require("cors");
-const connectDB = require("./config/db");
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
 
-const authRoutes = require("./routes/authRoutes");
-const expenseRoutes = require("./routes/expenseRoutes");
-const adminRoutes = require("./routes/adminRoutes");
+import authRoutes from "./routes/authRoutes.js";
+import expenseRoutes from "./routes/expenseRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
+
+dotenv.config();
 
 const app = express();
-
-// DB
-connectDB();
 
 // Middleware
 app.use(cors());
@@ -21,4 +19,4 @@ app.use("/api/auth", authRoutes);
 app.use("/api/expenses", expenseRoutes);
 app.use("/api/admin", adminRoutes);
 
-module.exports = app;
+export default app;

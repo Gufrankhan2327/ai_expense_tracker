@@ -147,7 +147,7 @@ export default function Login() {
 // this is for one user Manav
 //  name: 'Manav',
 //  email: 'manav@gmail.com',
-//  pass: manav@123
+//  pass: Manav@123
 
 // // this is for admin
 //  name: 'Gufran',
