@@ -77,6 +77,7 @@ export const getAnalytics = async (req, res) => {
             generateAdminInsights(expenses);
 
         res.json({
+            TEST: "ADMIN_ANALYTICS_V2",
             totalUsers,
             activeUsers,
             totalTransactions,   
