@@ -61,10 +61,12 @@ export default function Login() {
 
     } catch (err) {
 
-      console.error(
-        "LOGIN ERROR:",
-        err.response?.data || err.message
-      );
+        console.log("LOGIN ERROR:", err);
+
+        if (err.response) {
+          console.log("STATUS:", err.response.status);
+          console.log("DATA:", err.response.data);
+        }
 
       alert(
         err.response?.data?.msg ||
@@ -139,17 +141,42 @@ export default function Login() {
   );
 }
 
-// this is for one user Hemant
-//  name: 'Hemant',
-//  email: 'hemant@gmail.com',
-//  pass: Hemant@123
-
-// this is for one user Manav
-//  name: 'Manav',
-//  email: 'manav@gmail.com',
-//  pass: Manav@123
 
 // // this is for admin
 //  name: 'Gufran',
 //  email: 'gufran@gmail.com',
 //  pass: Gufran@123
+
+
+// [
+//   {
+//     "name": "Rahul Sharma",
+//     "email": "rahul@gmail.com",
+//     "password": "Rahul@123",
+//     "role": "user"
+//   },
+//   {
+//     "name": "Priya Singh",
+//     "email": "priya@gmail.com",
+//     "password": "Priya@123",
+//     "role": "user"
+//   },
+//   {
+//     "name": "Aman Verma",
+//     "email": "aman@gmail.com",
+//     "password": "Aman@123",
+//     "role": "user"
+//   },
+//   {
+//     "name": "Sneha Gupta",
+//     "email": "sneha@gmail.com",
+//     "password": "Sneha@123",
+//     "role": "user"
+//   },
+//   {
+//     "name": "Rohit Kumar",
+//     "email": "rohit@gmail.com",
+//     "password": "Rohit@123",
+//     "role": "user"
+//   }
+// ]

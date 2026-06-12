@@ -11,7 +11,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
   const menu = {
     user: [
       { name: "Dashboard", path: "/user", icon: "🧑" },
-      { name: "Expenses", path: "/user/expenses", icon: "💸" },
+      { name: "AddExpenses", path: "/user/expenses", icon: "💸" },
       { name: "Transactions", path: "/user/transactions", icon: "📋" },
       { name: "Analytics", path: "/user/analytics", icon: "📊" },
       { name: "Budget", path: "/user/budget", icon: "🎯" },

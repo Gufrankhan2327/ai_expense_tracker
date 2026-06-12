@@ -13,7 +13,7 @@ export default function AdminDashboard() {
   const fetchAnalytics = async () => {
     try {
       const res = await getAnalytics();
-      console.log("ADMIN RESPONSE:", res.data);
+      console.log("ADMIN RESPONSE FULL:",JSON.stringify(res.data, null, 2));
       setAnalytics(res.data);
     } catch (err) {
       console.log(err);

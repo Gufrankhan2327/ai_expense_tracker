@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { signupUser } from "../../services/authService";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -17,12 +18,37 @@ export default function Signup() {
     });
   };
 
-  const handleSignup = () => {
-    console.log("User Registered:", form);
+  const handleSignup = async () => {
+  try {
 
-    // 👉 later connect backend API
+    if (
+      !form.name ||
+      !form.email ||
+      !form.password
+    ) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    const res = await signupUser(form);
+
+    console.log("SIGNUP RESPONSE:", res.data);
+
+    alert("Signup Successful");
+
     navigate("/");
-  };
+
+  } catch (err) {
+
+    console.log("SIGNUP ERROR:", err);
+
+    alert(
+      err.response?.data?.msg ||
+      err.response?.data?.error ||
+      "Signup Failed"
+    );
+  }
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0f172a] to-[#1e293b]">

@@ -44,12 +44,19 @@ export const updateUserRole = async (req, res) => {
 export const getAnalytics = async (req, res) => {
     try {
         const users = await User.find();
+
+        const normalUsers = users.filter(
+            user => user.role === "user"
+        );
+
+        const totalUsers = normalUsers.length;
+
         const expenses = await Expense.find();
 
-        const totalUsers = users.length;
 
         const activeUsers = users.filter(
-            u => u.isActive !== false
+            u => u.role === "user" &&
+                u.isActive !== false
         ).length;
 
         const totalTransactions = expenses.length;
