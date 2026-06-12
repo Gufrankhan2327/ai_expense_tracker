@@ -47,35 +47,49 @@ export const getAnalytics = async (req, res) => {
         const expenses = await Expense.find();
 
         const totalUsers = users.length;
-        const activeUsers = users.filter(u => u.isActive !== false).length;
+
+        const activeUsers = users.filter(
+            u => u.isActive !== false
+        ).length;
+
+        const totalTransactions = expenses.length;
 
         const totalExpenses = expenses.reduce(
-            (sum, e) => sum + e.amount,
+            (sum, e) => sum + Number(e.amount || 0),
             0
         );
 
+        const averagePerUser =
+            totalUsers > 0
+                ? (totalExpenses / totalUsers).toFixed(2)
+                : 0;
+        
+
         const categoryData = {};
+
         expenses.forEach((e) => {
             categoryData[e.category] =
-                (categoryData[e.category] || 0) + e.amount;
+                (categoryData[e.category] || 0) +
+                Number(e.amount || 0);
         });
 
-        const insights = generateAdminInsights(expenses);
+        const insights =
+            generateAdminInsights(expenses);
 
         res.json({
             totalUsers,
             activeUsers,
+            totalTransactions,   
             totalExpenses,
-
-            // IMPORTANT
+            averagePerUser,      
             expenses,
-
             categories: categoryData,
-
-            insights
+            insights,
         });
 
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        res.status(500).json({
+            error: err.message
+        });
     }
 };

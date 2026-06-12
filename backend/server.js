@@ -48,7 +48,11 @@ app.use((err, req, res, next) => {
 
 //  DB connect
 mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log("MongoDB Connected"))
+    .then(() => {
+        console.log("MongoDB Connected");
+        console.log("DB:", mongoose.connection.name);
+        console.log("HOST:", mongoose.connection.host);
+    })
     .catch(err => console.log("DB Error:", err));
 
 //  Server

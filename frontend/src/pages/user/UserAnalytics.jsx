@@ -35,6 +35,7 @@ export default function UserAnalytics() {
 
   const fetchAnalytics = async () => {
     try {
+       console.log("TOKEN FROM STORAGE:", token);
       const res = await axios.get(
         "https://ai-expense-tracker-backend-rvb8.onrender.com/api/analytics/user",
         {
@@ -43,7 +44,7 @@ export default function UserAnalytics() {
           },
         }
       );
-
+      console.log("ANALYTICS RESPONSE:", res.data);
       setData(res.data);
     } catch (err) {
   console.log("Analytics Error:", err);
@@ -93,37 +94,122 @@ export default function UserAnalytics() {
     </div>
 
     {/* STATS */}
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+    {/* STATS */}
+<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
 
-      <div className="bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-6 transition-all duration-300 hover:-translate-y-2 hover:bg-white/15">
-        <p className="text-gray-400">Total Expense</p>
-        <h3 className="text-4xl font-bold mt-2">
-          ₹{data.totalExpense}
-        </h3>
-      </div>
+  {/* Total Expense */}
+  <div
+    className="
+      bg-white/10
+      backdrop-blur-xl
+      border border-white/10
+      rounded-3xl
+      p-6
+      cursor-pointer
+      transition-all
+      duration-300
+      hover:-translate-y-2
+      hover:scale-105
+      hover:bg-white/15
+      hover:border-green-500/30
+      hover:shadow-2xl
+      hover:shadow-green-500/20
+    "
+  >
+    <p className="text-gray-400 text-sm">
+      Total Expense
+    </p>
 
-      <div className="bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-6 transition-all duration-300 hover:-translate-y-2 hover:bg-white/15">
-        <p className="text-gray-400">Transactions</p>
-        <h3 className="text-4xl font-bold mt-2">
-          {data.totalTransactions}
-        </h3>
-      </div>
+    <h3 className="text-4xl font-bold mt-3">
+      ₹{data.totalExpense}
+    </h3>
+  </div>
 
-      <div className="bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-6 transition-all duration-300 hover:-translate-y-2 hover:bg-white/15">
-        <p className="text-gray-400">Average Expense</p>
-        <h3 className="text-4xl font-bold mt-2">
-          ₹{data.averageExpense}
-        </h3>
-      </div>
+  {/* Transactions */}
+  <div
+    className="
+      bg-white/10
+      backdrop-blur-xl
+      border border-white/10
+      rounded-3xl
+      p-6
+      cursor-pointer
+      transition-all
+      duration-300
+      hover:-translate-y-2
+      hover:scale-105
+      hover:bg-white/15
+      hover:border-blue-500/30
+      hover:shadow-2xl
+      hover:shadow-blue-500/20
+    "
+  >
+    <p className="text-gray-400 text-sm">
+      Transactions
+    </p>
 
-      <div className="bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-6 transition-all duration-300 hover:-translate-y-2 hover:bg-white/15">
-        <p className="text-gray-400">Top Category</p>
-        <h3 className="text-3xl font-bold mt-2">
-          {data.topCategory}
-        </h3>
-      </div>
+    <h3 className="text-4xl font-bold mt-3">
+      {data.totalTransactions}
+    </h3>
+  </div>
 
-    </div>
+  {/* Average Expense */}
+  <div
+    className="
+      bg-white/10
+      backdrop-blur-xl
+      border border-white/10
+      rounded-3xl
+      p-6
+      cursor-pointer
+      transition-all
+      duration-300
+      hover:-translate-y-2
+      hover:scale-105
+      hover:bg-white/15
+      hover:border-yellow-500/30
+      hover:shadow-2xl
+      hover:shadow-yellow-500/20
+    "
+  >
+    <p className="text-gray-400 text-sm">
+      Average Expense
+    </p>
+
+    <h3 className="text-4xl font-bold mt-3">
+      ₹{data.averageExpense}
+    </h3>
+  </div>
+
+  {/* Top Category */}
+  <div
+    className="
+      bg-white/10
+      backdrop-blur-xl
+      border border-white/10
+      rounded-3xl
+      p-6
+      cursor-pointer
+      transition-all
+      duration-300
+      hover:-translate-y-2
+      hover:scale-105
+      hover:bg-white/15
+      hover:border-purple-500/30
+      hover:shadow-2xl
+      hover:shadow-purple-500/20
+    "
+  >
+    <p className="text-gray-400 text-sm">
+      Top Category
+    </p>
+
+    <h3 className="text-3xl font-bold mt-3">
+      {data.topCategory}
+    </h3>
+  </div>
+
+</div>
 
     {/* MAIN SECTION */}
     <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">

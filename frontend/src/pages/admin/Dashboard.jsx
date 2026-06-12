@@ -13,6 +13,7 @@ export default function AdminDashboard() {
   const fetchAnalytics = async () => {
     try {
       const res = await getAnalytics();
+      console.log("ADMIN RESPONSE:", res.data);
       setAnalytics(res.data);
     } catch (err) {
       console.log(err);
@@ -35,6 +36,7 @@ export default function AdminDashboard() {
       a.users > b.users ? a : b
     ).name;
   }, [chartData]);
+ console.log("ANALYTICS STATE:", analytics);
 
   return (
     <div className="text-white p-6">
@@ -98,11 +100,14 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 items-stretch">
 
         {/* CHART */}
+        
         <div className="xl:col-span-2">
-
+          
           <AdminBarChart data={chartData} />
+          
 
         </div>
+        
 
         {/* INSIGHTS */}
         <div className="

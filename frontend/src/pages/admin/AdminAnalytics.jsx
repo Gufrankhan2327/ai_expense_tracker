@@ -72,8 +72,14 @@ export default function AdminAnalytics() {
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
 
       <Card
-        title="Users"
-        value={analytics.totalUsers || 0}
+        title="Active Users"
+        value={analytics.activeUsers || 0}
+        icon=""
+      />
+
+      <Card
+        title="Avg/User"
+        value={`₹${analytics.averagePerUser || 0}`}
         icon=""
       />
 
@@ -84,14 +90,8 @@ export default function AdminAnalytics() {
       />
 
       <Card
-        title="Expenses"
-        value={`₹${analytics.totalExpenses || 0}`}
-        icon=""
-      />
-
-      <Card
-        title="Avg / User"
-        value={`₹${analytics.averagePerUser || 0}`}
+       title="Expenses"
+  value={`₹${analytics.totalExpenses || 0}`}
         icon=""
       />
 
@@ -165,73 +165,56 @@ export default function AdminAnalytics() {
 
         <div className="space-y-4">
 
-          <div
-            className="
-            bg-white/5
-            border border-white/10
-            rounded-2xl
-            p-4
-          "
-          >
-            <p className="text-lg">
-              Platform spending is stable
-            </p>
-          </div>
+  <div className="bg-white/5 border border-white/10 rounded-2xl p-4">
+    <p className="text-lg">
+      Active Users:
+      <span className="font-bold">
+        {" "}{analytics.activeUsers || 0}
+      </span>
+    </p>
+  </div>
 
-          <div
-            className="
-            bg-white/5
-            border border-white/10
-            rounded-2xl
-            p-4
-          "
-          >
-            <p className="text-lg">
-              Total Users:
-              <span className="font-bold">
-                {" "} {analytics.totalUsers || 0}
-              </span>
-            </p>
-          </div>
+  <div className="bg-white/5 border border-white/10 rounded-2xl p-4">
+    <p className="text-lg">
+      Avg Expense/User:
+      <span className="font-bold">
+        {" "}₹{analytics.averagePerUser || 0}
+      </span>
+    </p>
+  </div>
 
-          <div
-            className="
-            bg-white/5
-            border border-white/10
-            rounded-2xl
-            p-4
-          "
-          >
-            <p className="text-lg">
-              Total Transactions:
-              <span className="font-bold">
-                {" "} {analytics.totalTransactions || 0}
-              </span>
-            </p>
-          </div>
+  <div className="bg-white/5 border border-white/10 rounded-2xl p-4">
+    <p className="text-lg">
+      Categories:
+      <span className="font-bold">
+        {" "}
+        {Object.keys(
+          analytics.categories || {}
+        ).length}
+      </span>
+    </p>
+  </div>
 
-          <div
-            className="
-            bg-gradient-to-r
-            from-indigo-500/20
-            to-purple-500/20
-            border border-indigo-500/20
-            rounded-2xl
-            p-5
-          "
-          >
+  <div
+    className="
+    bg-gradient-to-r
+    from-indigo-500/20
+    to-purple-500/20
+    border border-indigo-500/20
+    rounded-2xl
+    p-5
+  "
+  >
+    <h3 className="text-xl font-bold mb-2">
+      Platform Status
+    </h3>
 
-            <h3 className="text-xl font-bold mb-2">
-              Platform Status
-            </h3>
+    <p className="text-gray-300">
+      Analytics engine running successfully.
+    </p>
+  </div>
 
-            <p className="text-gray-300">
-              Analytics engine running successfully.
-            </p>
-
-          </div>
-
-        </div>
+</div>
 
       </div>
 
