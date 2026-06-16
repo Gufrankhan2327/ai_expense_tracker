@@ -94,15 +94,15 @@ The AI Expense Tracker helps users manage daily expenses efficiently while provi
 
 ### 🧑 Admin Dashboard
 
-### Dashboard_
+### Dashboard
 
 ![Admin Dashboard](./screenshots/admin_dashboard.png)
 
-### User_Management_
+### User_Management
 
 ![Users](./screenshots/users.png)
 
-#### Analytics__
+#### Analytics
 
 ![Admin Analytics](./screenshots/admin_analytics.png)
 
@@ -110,17 +110,17 @@ The AI Expense Tracker helps users manage daily expenses efficiently while provi
 
 ![Reports](./screenshots/reports.png)
 
-#### Profile_
+#### Profile
 
 ![Admin Profile](./screenshots/admin_profile.png)
 
 ## 🌐 Live Demo
 
 Frontend:
-<https://your-frontend-url.onrender.com>
+https://ai-expense-tracker-68bj.onrender.com
 
 Backend API:
-<https://your-backend-url.onrender.com>
+https://ai-expense-tracker-backend-rvb8.onrender.com
 
 ## 🛠️ Tech Stack
 
@@ -210,9 +210,10 @@ Login → JWT Token → Protected Routes → Role Verification → User/Admin Da
 
 ### Clone Repository
 
-bash
-git clone <https://github.com/your-username/ai-expense-tracker.git>
-cd ai-expense-tracker
+```bash
+git clone https://github.com/Gufrankhan2327/ai_expense_tracker.git
+cd ai_expense_tracker
+```
 
 ### Backend Setup
 
@@ -270,7 +271,7 @@ JWT_SECRET=your_secret_key
 * PUT /api/expenses/:id
 * DELETE /api/expenses/:id
 
-### Analytics_
+### Analytics
 
 * GET /api/analytics/user
 * GET /api/admin/analytics
@@ -286,7 +287,7 @@ JWT_SECRET=your_secret_key
 * GET /api/users
 * DELETE /api/users/:id
 
-### Reports_
+### Reports
 
 * GET /api/reports
 
@@ -302,10 +303,22 @@ JWT_SECRET=your_secret_key
 * 🤖 Advanced AI Insights
 * 🌍 Multi-currency Support
 
+## 📌 Resume Description
+
+Developed a full-stack AI Expense Tracker using the MERN Stack with JWT authentication, role-based access control, analytics dashboards, budget tracking, CSV report generation, and MongoDB Atlas integration. Built responsive user and admin panels with real-time expense insights and reporting features.
+
 ## 👨‍💻 Author
 
 **Gufran Khan**
 Full Stack Developer (MERN + AI)
+
+## 📬 Contact
+
+GitHub:
+https://github.com/Gufrankhan2327
+
+Email:
+gufrankhan52002@gmail.com
 
 ## ⭐ Show Your Support
 
