@@ -33,43 +33,28 @@ export default function AdminReports() {
   };
 
   const exportCSV = () => {
+      const rows = [
+        ["Metric", "Value"],
+        ["Total Users", analytics.totalUsers || 0],
+        ["Active Users", analytics.activeUsers || 0],
+        ["Total Transactions", analytics.totalTransactions || 0],
+        ["Total Expenses", analytics.totalExpenses || 0],
+        ["Average Per User", analytics.averagePerUser || 0],
+      ];
 
-    const rows = [
-      [
-        "User Name",
-        "Email",
-        "Role",
-        "Amount",
-        "Category",
-        "Note",
-        "Date"
-      ],
+      const csv =
+        "data:text/csv;charset=utf-8," +
+        rows.map((r) => r.join(",")).join("\n");
 
-      ...expenses.map((e) => [
-        e.userId?.name || "",
-        e.userId?.email || "",
-        e.userId?.role || "",
-        e.amount,
-        e.category,
-        e.note,
-        new Date(e.date).toLocaleDateString()
-      ])
-    ];
+      const link = document.createElement("a");
 
-    const csv =
-      "data:text/csv;charset=utf-8," +
-      rows.map((r) => r.join(",")).join("\n");
+      link.href = encodeURI(csv);
+      link.download = "admin-report.csv";
 
-    const link =
-      document.createElement("a");
-
-    link.href = encodeURI(csv);
-
-    link.download =
-      "admin-platform-report.csv";
-
-    link.click();
-  };
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
 
   return (
     <div className="text-white p-6">
