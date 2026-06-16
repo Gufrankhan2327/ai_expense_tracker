@@ -101,3 +101,18 @@ export const getAnalytics = async (req, res) => {
         });
     }
 };
+
+export const getReports = async (req, res) => {
+  try {
+
+    const expenses = await Expense.find()
+      .populate("userId", "name email role");
+
+    res.json(expenses);
+
+  } catch (err) {
+    res.status(500).json({
+      error: err.message
+    });
+  }
+};

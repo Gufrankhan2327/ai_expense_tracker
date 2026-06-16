@@ -13,7 +13,7 @@ export default function AdminDashboard() {
   const fetchAnalytics = async () => {
     try {
       const res = await getAnalytics();
-      console.log("ADMIN RESPONSE FULL:",JSON.stringify(res.data, null, 2));
+      console.log("ADMIN RESPONSE FULL:", JSON.stringify(res.data, null, 2));
       setAnalytics(res.data);
     } catch (err) {
       console.log(err);
@@ -23,7 +23,7 @@ export default function AdminDashboard() {
   // 📊 Chart Data
   const chartData = Object.entries(
     analytics.categories || {}
-  ).map(([key, value]) => ({
+    ).map(([key, value]) => ({
     name: key,
     users: value,
   }));
@@ -36,7 +36,7 @@ export default function AdminDashboard() {
       a.users > b.users ? a : b
     ).name;
   }, [chartData]);
- console.log("ANALYTICS STATE:", analytics);
+  console.log("ANALYTICS STATE:", analytics);
 
   return (
     <div className="text-white p-6">
@@ -71,60 +71,41 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
 
         <Card
-          title="Users"
+          title="👥 Users"
           value={analytics.totalUsers || 0}
-          icon=""
         />
 
         <Card
-          title="Transactions"
+          title="💳 Transactions"
           value={analytics.totalTransactions || 0}
-          icon=""
         />
 
         <Card
-          title="Expenses"
+          title="💰 Expenses"
           value={`₹${analytics.totalExpenses || 0}`}
-          icon=""
         />
 
         <Card
-          title="Top Category"
+          title="🏆 Top Category"
           value={topCategory}
-          icon=""
         />
 
       </div>
 
       {/* MAIN SECTION */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 items-stretch">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
 
-        {/* CHART */}
-        
+        {/* BAR CHART */}
         <div className="xl:col-span-2">
-          
-          <AdminBarChart data={chartData} />
-          
+          <Card title="📊 Expense Categories">
 
+            <AdminBarChart data={chartData} />
+
+          </Card>
         </div>
-        
 
-        {/* INSIGHTS */}
-        <div className="
-          bg-white/10
-          backdrop-blur-xl
-          border border-white/10
-          rounded-3xl
-          p-6
-          flex
-          flex-col
-          justify-between
-          h-full
-        ">
-
-          <h2 className="text-3xl font-bold mb-2">
-            AI Insights
-          </h2>
+        {/* AI INSIGHTS */}
+        <Card title="🤖 AI Insights">
 
           <p className="text-gray-400 mb-6">
             Smart analytics insights
@@ -132,54 +113,77 @@ export default function AdminDashboard() {
 
           <div className="space-y-4">
 
-            <div className="
-              bg-white/5
-              border border-white/10
-              rounded-2xl
-              p-4
-            ">
+            <div
+              className="
+            bg-white/5
+            border border-white/10
+            rounded-2xl
+            p-4
+          "
+            >
               <p className="text-lg">
                 Platform spending is stable
               </p>
             </div>
 
-            <div className="
-              bg-white/5
-              border border-white/10
-              rounded-2xl
-              p-4
-            ">
+            <div
+              className="
+            bg-white/5
+            border border-white/10
+            rounded-2xl
+            p-4
+          "
+            >
               <p className="text-lg">
-                Highest category:
+                Highest Category:
                 <span className="font-bold">
-                  {" "} {topCategory}
+                  {" "}{topCategory}
                 </span>
               </p>
             </div>
 
-            <div className="
-              bg-white/5
-              border border-white/10
-              rounded-2xl
-              p-4
-            ">
+            <div
+              className="
+            bg-white/5
+            border border-white/10
+            rounded-2xl
+            p-4
+          "
+            >
               <p className="text-lg">
                 Total Transactions:
                 <span className="font-bold">
-                  {" "} {analytics.totalTransactions || 0}
+                  {" "}{analytics.totalTransactions || 0}
                 </span>
               </p>
             </div>
 
-            <div className="
-              bg-gradient-to-r
-              from-indigo-500/20
-              to-purple-500/20
-              border border-indigo-500/20
-              rounded-2xl
-              p-5
-            ">
+            <div
+              className="
+            bg-white/5
+            border border-white/10
+            rounded-2xl
+            p-4
+          "
+            >
+              <p className="text-lg">
+                Total Users:
+                <span className="font-bold">
+                  {" "}{analytics.totalUsers || 0}
+                </span>
+              </p>
+            </div>
 
+            <div
+              className="
+            bg-gradient-to-r
+            from-indigo-500/20
+            to-purple-500/20
+            border border-indigo-500/20
+            rounded-2xl
+            p-5
+          "
+            >
               <h3 className="text-xl font-bold mb-2">
                 Platform Status
               </h3>
@@ -187,15 +191,13 @@ export default function AdminDashboard() {
               <p className="text-gray-300">
                 Real-time analytics system active.
               </p>
-
             </div>
 
           </div>
 
-        </div>
+        </Card>
 
       </div>
-
     </div>
   );
 }

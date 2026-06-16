@@ -15,7 +15,7 @@ export default function Login() {
     password: "",
   });
 
-  // 🔹 Input Change
+  // Input Change
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -23,7 +23,7 @@ export default function Login() {
     });
   };
 
-  // 🔥 Login
+  // Login
   const handleLogin = async () => {
     try {
       setLoading(true);
@@ -38,21 +38,21 @@ export default function Login() {
 
       console.log("LOGIN RESPONSE:", res.data);
 
-      // ✅ Save Token
+      //  Save Token
       localStorage.setItem("token", res.data.token);
 
-      // ✅ Save User
+      //  Save User
       localStorage.setItem(
         "user",
         JSON.stringify(res.data)
       );
 
-      // ✅ Context Login
+      //  Context Login
       if (login) {
         login(res.data);
       }
 
-      // ✅ Redirect
+      //  Redirect
       if (res.data.role === "admin") {
         navigate("/admin");
       } else {

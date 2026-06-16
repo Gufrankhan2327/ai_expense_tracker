@@ -6,7 +6,8 @@ import {
     getUsers,
     getAnalytics,
     deleteUser,
-    updateUserRole
+    updateUserRole,
+    getReports
 } from "../controllers/adminController.js";
 
 import authMiddleware from "../middleware/authMiddleware.js";
@@ -16,6 +17,7 @@ import roleMiddleware from "../middleware/roleMiddleware.js";
 router.get("/users", authMiddleware, roleMiddleware("admin"), getUsers);
 
 router.get("/analytics", authMiddleware, roleMiddleware("admin"), getAnalytics);
+router.get("/reports" , authMiddleware, roleMiddleware("admin"), getReports);
 
 router.delete("/users/:id", authMiddleware, roleMiddleware("admin"), deleteUser);
 

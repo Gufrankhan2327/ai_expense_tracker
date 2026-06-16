@@ -9,22 +9,25 @@ export default function Sidebar({ isOpen, setIsOpen }) {
 
   // 🎯 MENU
   const menu = {
-    user: [
-      { name: "Dashboard", path: "/user", icon: "🧑" },
-      { name: "AddExpenses", path: "/user/expenses", icon: "💸" },
-      { name: "Transactions", path: "/user/transactions", icon: "📋" },
-      { name: "Analytics", path: "/user/analytics", icon: "📊" },
-      { name: "Budget", path: "/user/budget", icon: "🎯" },
-      { name: "Profile", path: "/user/profile", icon: "👤" },
-    ],
-    admin: [
-      { name: "Dashboard", path: "/admin", icon: "🧑" },
-      { name: "Users", path: "/admin/users", icon: "👥" },
-      { name: "Analytics", path: "/admin/analytics", icon: "📊" },
-      { name: "Reports", path: "/admin/reports", icon: "📤" },
-      { name: "Settings", path: "/admin/settings", icon: "⚙️" },
-    ],
-  };
+  user: [
+    { name: "Dashboard", path: "/user", icon: "🧑" },
+    { name: "Add Expenses", path: "/user/expenses", icon: "💸" },
+    { name: "Transactions", path: "/user/transactions", icon: "📋" },
+    { name: "Analytics", path: "/user/analytics", icon: "📊" },
+    { name: "Reports", path: "/user/reports", icon: "📤" },
+    { name: "Budget", path: "/user/budget", icon: "🎯" },
+    { name: "Profile", path: "/user/profile", icon: "👤" },
+  ],
+
+  admin: [
+    { name: "Dashboard", path: "/admin", icon: "🧑" },
+    { name: "Users", path: "/admin/users", icon: "👥" },
+    { name: "Analytics", path: "/admin/analytics", icon: "📊" },
+    { name: "Reports", path: "/admin/reports", icon: "📤" },
+    { name: "Profile", path: "/admin/profile", icon: "👤" },
+    { name: "Settings", path: "/admin/settings", icon: "⚙️" },
+  ],
+};
 
   const currentMenu = menu[user.role] || menu.user;
 

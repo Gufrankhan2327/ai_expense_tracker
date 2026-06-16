@@ -9,10 +9,11 @@ export default function Navbar({ toggleSidebar }) {
   const [openNotif, setOpenNotif] = useState(false);
   const [theme, setTheme] = useState("dark");
 
-  const user = JSON.parse(localStorage.getItem("user")) || {
-    name: "User",
-    email: "user@email.com",
-  };
+  const user = JSON.parse(localStorage.getItem("user")) || {};
+  const profilePath =
+  user.role === "admin"
+    ? "/admin/profile"
+    : "/user/profile";
 
   // 🎯 Dynamic Title
   const getTitle = () => {
@@ -30,31 +31,7 @@ export default function Navbar({ toggleSidebar }) {
     return "Dashboard";
   };
 
-  // // 🔹 Load theme on mount
-  // useEffect(() => {
-  //   const savedTheme = localStorage.getItem("theme") || "dark";
-  //   setTheme(savedTheme);
-
-  //   if (savedTheme === "dark") {
-  //     document.documentElement.classList.add("dark");
-  //   } else {
-  //     document.documentElement.classList.remove("dark");
-  //   }
-  // }, []);
-
-  // // 🔹 Toggle theme
-  // const toggleTheme = () => {
-  //   const newTheme = theme === "dark" ? "light" : "dark";
-
-  //   setTheme(newTheme);
-  //   localStorage.setItem("theme", newTheme);
-
-  //   if (newTheme === "dark") {
-  //     document.documentElement.classList.add("dark");
-  //   } else {
-  //     document.documentElement.classList.remove("dark");
-  //   }
-  // };
+ 
 
 
   // 🔓 Logout
@@ -133,13 +110,7 @@ export default function Navbar({ toggleSidebar }) {
           )}
         </div>
 
-        {/* 🌗 Theme */}
-        {/* <button
-          onClick={toggleTheme}
-          className="bg-white/10 px-3 py-1 rounded-lg text-white hover:bg-white/20"
-        >
-          {theme === "dark" ? "Dark" : "Light"}
-        </button> */}
+      
 
         {/* 👤 Profile */}
         <div className="relative">
@@ -163,18 +134,20 @@ export default function Navbar({ toggleSidebar }) {
               <p className="text-sm text-gray-400 mb-3">{user.email}</p>
 
               <button
-                onClick={() => navigate("/user/profile")}
+                onClick={() => navigate(profilePath)}
                 className="block w-full text-left text-gray-300 hover:text-white mb-2"
               >
                 Profile
               </button>
 
-              <button
-                onClick={() => navigate("/admin/settings")}
-                className="block w-full text-left text-gray-300 hover:text-white mb-2"
-              >
-                Settings
-              </button>
+              {user.role === "admin" && (
+                <button
+                  onClick={() => navigate("/admin/settings")}
+                  className="block w-full text-left text-gray-300 hover:text-white mb-2"
+                >
+                  Settings
+                </button>
+              )}
 
               <button
                 onClick={handleLogout}
