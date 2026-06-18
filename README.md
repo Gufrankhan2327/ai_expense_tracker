@@ -87,7 +87,7 @@ The AI Expense Tracker helps users manage daily expenses efficiently while provi
 
 ### 👤 User Dashboard
 
-#### Dashboard
+#### UserDashboard
 
 ![User Dashboard](./screenshots/user_dashboard.png)
 
@@ -113,15 +113,15 @@ The AI Expense Tracker helps users manage daily expenses efficiently while provi
 
 ### 🧑 Admin Dashboard
 
-### Dashboard_
+### Dashboard
 
 ![Admin Dashboard](./screenshots/admin_dashboard.png)
 
-### User_Management_
+### User_Management
 
 ![Users](./screenshots/users.png)
 
-#### Analytics__
+#### Analytics
 
 ![Admin Analytics](./screenshots/admin_analytics.png)
 
@@ -129,17 +129,17 @@ The AI Expense Tracker helps users manage daily expenses efficiently while provi
 
 ![Reports](./screenshots/reports.png)
 
-#### Profile_
+#### AdminProfile
 
 ![Admin Profile](./screenshots/admin_profile.png)
 
 ## 🌐 Live Demo
 
 Frontend:
-<https://ai*expense*tracker*68bj.onrender.com>
+<https://your-frontend-url.onrender.com>
 
-Backend:
-<https://ai*expense*tracker*backend*rvb8.onrender.com>
+Backend API:
+<https://your-backend-url.onrender.com>
 
 ## 🛠️ Tech Stack
 
@@ -257,8 +257,8 @@ Login → JWT Token → Protected Routes → Role Verification → User/Admin Da
 ### Clone Repository
 
 bash
-git clone <https://github.com/your*username/ai*expense*tracker.git>
-cd ai*expense*tracker
+git clone <https://github.com/your-username/ai-expense-tracker.git>
+cd ai-expense-tracker
 
 ### Backend Setup
 
@@ -316,7 +316,7 @@ JWT_SECRET=your_secret_key
 * PUT /api/expenses/:id
 * DELETE /api/expenses/:id
 
-### Analytics_
+### UserAnalytics
 
 * GET /api/analytics/user
 * GET /api/admin/analytics
@@ -332,7 +332,7 @@ JWT_SECRET=your_secret_key
 * GET /api/users
 * DELETE /api/users/:id
 
-### Reports_
+### AdminReports
 
 * GET /api/reports
 
@@ -346,15 +346,12 @@ JWT_SECRET=your_secret_key
 * 🔔 Notification System
 * 📱 Mobile App (React Native)
 * 🤖 Advanced AI Insights
-* 🌍 Multi*currency Support
+* 🌍 Multi-currency Support
 
 ## 👨‍💻 Author
 
 **Gufran Khan**
 Full Stack Developer (MERN + AI)
-
-GitHub:
-<https://github.com/Gufrankhan2327>
 
 ## ⭐ Show Your Support
 
