@@ -39,165 +39,146 @@ export default function AdminDashboard() {
   console.log("ANALYTICS STATE:", analytics);
 
   return (
-    <div className="text-white p-6">
+  <div className="text-white p-4 sm:p-6">
 
-      {/* HEADER */}
-      <div className="flex justify-between items-center mb-8">
+    {/* HEADER */}
+    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-8">
 
-        <div>
-          <h2 className="text-5xl font-bold  ">
-            Admin Dashboard
-          </h2>
+      <div>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+          Admin Dashboard
+        </h2>
 
-          <p className="text-gray-400 mt-2">
-            Monitor platform analytics & expenses
-          </p>
-        </div>
-
-        <div className="
-          bg-green-500/10
-          border border-green-500/20
-          px-5 py-3
-          rounded-2xl
-        ">
-          <p className="text-green-400 font-semibold">
-            ● System Live
-          </p>
-        </div>
-
+        <p className="text-gray-400 mt-2 text-sm sm:text-base">
+          Monitor platform analytics & expenses
+        </p>
       </div>
 
-      {/* STATS */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
-
-        <Card
-          title="👥 Users"
-          value={analytics.totalUsers || 0}
-        />
-
-        <Card
-          title="💳 Transactions"
-          value={analytics.totalTransactions || 0}
-        />
-
-        <Card
-          title="💰 Expenses"
-          value={`₹${analytics.totalExpenses || 0}`}
-        />
-
-        <Card
-          title="🏆 Top Category"
-          value={topCategory}
-        />
-
+      <div
+        className="
+        bg-green-500/10
+        border border-green-500/20
+        px-4 sm:px-5
+        py-3
+        rounded-2xl
+        w-fit
+      "
+      >
+        <p className="text-green-400 font-semibold text-sm sm:text-base">
+          ● System Live
+        </p>
       </div>
 
-      {/* MAIN SECTION */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+    </div>
 
-        {/* BAR CHART */}
-        <div className="xl:col-span-2">
-          <Card title="📊 Expense Categories">
+    {/* STATS */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 mb-8">
 
+      <Card
+        title="👥 Users"
+        value={analytics.totalUsers || 0}
+      />
+
+      <Card
+        title="💳 Transactions"
+        value={analytics.totalTransactions || 0}
+      />
+
+      <Card
+        title="💰 Expenses"
+        value={`₹${analytics.totalExpenses || 0}`}
+      />
+
+      <Card
+        title="🏆 Top Category"
+        value={topCategory}
+      />
+
+    </div>
+
+    {/* MAIN SECTION */}
+    <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+
+      {/* BAR CHART */}
+      <div className="xl:col-span-2">
+
+        <Card title="📊 Expense Categories">
+
+          <div className="w-full overflow-x-auto">
             <AdminBarChart data={chartData} />
-
-          </Card>
-        </div>
-
-        {/* AI INSIGHTS */}
-        <Card title="🤖 AI Insights">
-
-          <p className="text-gray-400 mb-6">
-            Smart analytics insights
-          </p>
-
-          <div className="space-y-4">
-
-            <div
-              className="
-            bg-white/5
-            border border-white/10
-            rounded-2xl
-            p-4
-          "
-            >
-              <p className="text-lg">
-                Platform spending is stable
-              </p>
-            </div>
-
-            <div
-              className="
-            bg-white/5
-            border border-white/10
-            rounded-2xl
-            p-4
-          "
-            >
-              <p className="text-lg">
-                Highest Category:
-                <span className="font-bold">
-                  {" "}{topCategory}
-                </span>
-              </p>
-            </div>
-
-            <div
-              className="
-            bg-white/5
-            border border-white/10
-            rounded-2xl
-            p-4
-          "
-            >
-              <p className="text-lg">
-                Total Transactions:
-                <span className="font-bold">
-                  {" "}{analytics.totalTransactions || 0}
-                </span>
-              </p>
-            </div>
-
-            <div
-              className="
-            bg-white/5
-            border border-white/10
-            rounded-2xl
-            p-4
-          "
-            >
-              <p className="text-lg">
-                Total Users:
-                <span className="font-bold">
-                  {" "}{analytics.totalUsers || 0}
-                </span>
-              </p>
-            </div>
-
-            <div
-              className="
-            bg-gradient-to-r
-            from-indigo-500/20
-            to-purple-500/20
-            border border-indigo-500/20
-            rounded-2xl
-            p-5
-          "
-            >
-              <h3 className="text-xl font-bold mb-2">
-                Platform Status
-              </h3>
-
-              <p className="text-gray-300">
-                Real-time analytics system active.
-              </p>
-            </div>
-
           </div>
 
         </Card>
 
       </div>
+
+      {/* AI INSIGHTS */}
+      <Card title="🤖 AI Insights">
+
+        <p className="text-gray-400 mb-6 text-sm sm:text-base">
+          Smart analytics insights
+        </p>
+
+        <div className="space-y-4">
+
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-4">
+            <p className="text-sm sm:text-lg">
+              Platform spending is stable
+            </p>
+          </div>
+
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-4">
+            <p className="text-sm sm:text-lg">
+              Highest Category:
+              <span className="font-bold">
+                {" "} {topCategory}
+              </span>
+            </p>
+          </div>
+
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-4">
+            <p className="text-sm sm:text-lg">
+              Total Transactions:
+              <span className="font-bold">
+                {" "} {analytics.totalTransactions || 0}
+              </span>
+            </p>
+          </div>
+
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-4">
+            <p className="text-sm sm:text-lg">
+              Total Users:
+              <span className="font-bold">
+                {" "} {analytics.totalUsers || 0}
+              </span>
+            </p>
+          </div>
+
+          <div
+            className="
+            bg-gradient-to-r
+            from-indigo-500/20
+            to-purple-500/20
+            border border-indigo-500/20
+            rounded-2xl
+            p-4 sm:p-5
+          "
+          >
+            <h3 className="text-lg sm:text-xl font-bold mb-2">
+              Platform Status
+            </h3>
+
+            <p className="text-gray-300 text-sm sm:text-base">
+              Real-time analytics system active.
+            </p>
+          </div>
+
+        </div>
+
+      </Card>
+
     </div>
-  );
+
+  </div>
+);
 }

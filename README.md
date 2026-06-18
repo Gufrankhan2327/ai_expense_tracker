@@ -1,12 +1,12 @@
 # AI_Expense_Tracker
 
-A modern AI-powered Expense Tracker built using React, Node.js, Express.js, MongoDB Atlas, and JWT Authentication. The application provides real-time expense management, analytics dashboards, budget tracking, CSV report generation, and role-based access for Users and Admins.
+A modern AI*powered Expense Tracker built using React, Node.js, Express.js, MongoDB Atlas, and JWT Authentication. The application provides real*time expense management, analytics dashboards, budget tracking, CSV report generation, and role*based access for Users and Admins.
 
 ✨ Highlights
 
 ✅ JWT Authentication & Authorization
 
-✅ Role-Based Access Control (User & Admin)
+✅ Role*Based Access Control (User & Admin)
 
 ✅ Expense Management (Add, Edit, Delete)
 
@@ -26,7 +26,13 @@ A modern AI-powered Expense Tracker built using React, Node.js, Express.js, Mong
 
 ✅ Protected Routes
 
-✅ Real-Time Expense Insights
+✅ Real*Time Expense Insights
+
+![React](https://img.shields.io/badge/React*19*blue)
+![Node.js](https://img.shields.io/badge/Node.js*Backend*green)
+![MongoDB](https://img.shields.io/badge/MongoDB*Atlas*brightgreen)
+![JWT](https://img.shields.io/badge/Auth*JWT*orange)
+![License](https://img.shields.io/badge/License*MIT*blue)
 
 ## 🚀 Key Features
 
@@ -53,6 +59,19 @@ The AI Expense Tracker helps users manage daily expenses efficiently while provi
 * Report Generation
 * Platform Statistics
 * System Settings
+
+## 📑 Table of Contents
+
+* Features
+* Screenshots
+* Live Demo
+* Tech Stack
+* Architecture
+* Installation
+* Environment Variables
+* API Endpoints
+* Future Improvements
+* Author
 
 ## 📸 Project Screenshots
 
@@ -117,10 +136,10 @@ The AI Expense Tracker helps users manage daily expenses efficiently while provi
 ## 🌐 Live Demo
 
 Frontend:
-<https://your-frontend-url.onrender.com>
+<https://ai*expense*tracker*68bj.onrender.com>
 
-Backend API:
-<https://your-backend-url.onrender.com>
+Backend:
+<https://ai*expense*tracker*backend*rvb8.onrender.com>
 
 ## 🛠️ Tech Stack
 
@@ -162,20 +181,25 @@ Analytics & Reports Engine
 ## 📁 Folder Structure
 
 frontend/
- ├── src/
- │   ├── components/
- │   ├── pages/
- │   │   ├── user/
- │   │   ├── admin/
- │   ├── routes/
- │   ├── services/
+└── src/
+    ├── components/
+    │   ├── layout/
+    │   └── ui/
+    ├── pages/
+    │   ├── auth/
+    │   ├── user/
+    │   └── admin/
+    ├── routes/
+    ├── services/
+    └── App.jsx
 
 backend/
- ├── controllers/
- ├── models/
- ├── routes/
- ├── middleware/
- ├── server.js
+├── controllers/
+├── middleware/
+├── models/
+├── routes/
+├── config/
+└── server.js
 
 ## 🗄️ Database Schema
 
@@ -202,6 +226,28 @@ backend/
 }
 ```
 
+## 🔒 Security Features
+
+✅ JWT Authentication
+
+✅ Protected Routes
+
+✅ Role*Based Access Control
+
+✅ Password Hashing
+
+✅ Secure MongoDB Atlas Connection
+
+✅ Environment Variable Protection
+
+## ⚡ Performance Features
+
+* Fast React UI
+* Recharts Analytics
+* Optimized API Calls
+* Responsive Design
+* MongoDB Indexing
+
 ## 🔐 Authentication Flow
 
 Login → JWT Token → Protected Routes → Role Verification → User/Admin Dashboard
@@ -211,8 +257,8 @@ Login → JWT Token → Protected Routes → Role Verification → User/Admin Da
 ### Clone Repository
 
 bash
-git clone <https://github.com/your-username/ai-expense-tracker.git>
-cd ai-expense-tracker
+git clone <https://github.com/your*username/ai*expense*tracker.git>
+cd ai*expense*tracker
 
 ### Backend Setup
 
@@ -300,12 +346,15 @@ JWT_SECRET=your_secret_key
 * 🔔 Notification System
 * 📱 Mobile App (React Native)
 * 🤖 Advanced AI Insights
-* 🌍 Multi-currency Support
+* 🌍 Multi*currency Support
 
 ## 👨‍💻 Author
 
 **Gufran Khan**
 Full Stack Developer (MERN + AI)
+
+GitHub:
+<https://github.com/Gufrankhan2327>
 
 ## ⭐ Show Your Support
 
