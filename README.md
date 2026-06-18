@@ -28,11 +28,14 @@ A modern AI*powered Expense Tracker built using React, Node.js, Express.js, Mong
 
 ✅ Real*Time Expense Insights
 
-![React](https://img.shields.io/badge/React*19*blue)
-![Node.js](https://img.shields.io/badge/Node.js*Backend*green)
-![MongoDB](https://img.shields.io/badge/MongoDB*Atlas*brightgreen)
-![JWT](https://img.shields.io/badge/Auth*JWT*orange)
-![License](https://img.shields.io/badge/License*MIT*blue)
+
+
+![React](https://img.shields.io/badge/React-19-blue?logo=react)
+![Node.js](https://img.shields.io/badge/Node.js-Express-green?logo=node.js)
+![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green?logo=mongodb)
+![JWT](https://img.shields.io/badge/Auth-JWT-orange)
+![Status](https://img.shields.io/badge/Status-Production-success)
+
 
 ## 🚀 Key Features
 
