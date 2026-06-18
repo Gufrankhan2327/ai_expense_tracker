@@ -106,127 +106,271 @@ export default function Expenses() {
     });
   }, [expenses, filter, search]);
 
-  return (
-    <div className="text-white">
+return (
+  <div className="text-white p-4 sm:p-6">
 
-      {/* 🔹 Header */}
-      <h1 className="text-2xl font-bold mb-6">💸 Expenses</h1>
+    {/* HEADER */}
+    <div className="mb-8">
 
-          {/* ➕ Add / Edit Form */}
-         <div className="mb-6">
-            <Card title={editId ? "✏️ Edit Expense" : "Add Expense"}>
-                <form
-                onSubmit={handleSubmit}
-                className="flex flex-col md:flex-row gap-4"
-                >
-                <input
-                    type="number"
-                    placeholder="Amount"
-                    value={form.amount}
-                    onChange={(e) =>
-                    setForm({ ...form, amount: e.target.value })
-                    }
-                    className="p-2 rounded bg-white/10 w-full"
-                    required
-                />
+      <h1 className="text-3xl sm:text-4xl font-bold">
+        💸 Expenses
+      </h1>
 
-                <select
-                    value={form.category}
-                    onChange={(e) =>
-                    setForm({ ...form, category: e.target.value })
-                    }
-                    className="p-2 rounded bg-white/10 w-full text-black"
-                >
-                   
-                    <option value="food">Food</option>
-                    <option value="transport">Transport</option>
-                    <option value="shopping">Shopping</option>
-                    <option value="bills">Bills</option>
-                    <option value="other">Other</option>
-                </select>
+      <p className="text-gray-400 mt-2">
+        Manage and track your daily expenses
+      </p>
 
-                <input
-                    type="text"
-                    placeholder="Note"
-                    value={form.note}
-                    onChange={(e) =>
-                    setForm({ ...form, note: e.target.value })
-                    }
-                    className="p-2 rounded bg-white/10 w-full"
-                />
+    </div>
 
-                <button className="bg-green-500 px-4 py-2 rounded">
-                    {editId ? "Update" : "Add"}
-                </button>
-                </form>
-            </Card>
-         </div>
+    {/* ADD / EDIT FORM */}
+    <div className="mb-8">
 
-          {/* 🔍 Filters */}
-          <div className="mb-6">
-            <Card title="Filters" className="mt-6">
-                <div className="flex flex-col md:flex-row gap-4">
-                <select
-                    onChange={(e) => setFilter(e.target.value)}
-                    className="p-2 rounded bg-white/10 text-black"
-                >
-                    
-                    <option value="">All</option>
-                    <option value="food">Food</option>
-                    <option value="transport">Transport</option>
-                    <option value="shopping">Shopping</option>
-                    <option value="bills">Bills</option>
-                           
-                </select>
+      <Card title={editId ? "✏️ Edit Expense" : "➕ Add Expense"}>
 
-                <input
-                    placeholder="Search..."
-                    onChange={(e) => setSearch(e.target.value)}
-                    className="p-2 rounded bg-white/10 w-full"
-                />
-                </div>
-            </Card>
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mt-4"
+        >
+
+          <input
+            type="number"
+            placeholder="Amount"
+            value={form.amount}
+            onChange={(e) =>
+              setForm({
+                ...form,
+                amount: e.target.value,
+              })
+            }
+            className="
+              p-3
+              rounded-xl
+              bg-white/10
+              border border-white/10
+              outline-none
+            "
+            required
+          />
+
+          <select
+            value={form.category}
+            onChange={(e) =>
+              setForm({
+                ...form,
+                category: e.target.value,
+              })
+            }
+            className="
+              p-3
+              rounded-xl
+              bg-white/10
+              border border-white/10
+              text-white
+            "
+          >
+            <option value="food" className="text-black">Food</option>
+            <option value="transport" className="text-black">Transport</option>
+            <option value="shopping" className="text-black">Shopping</option>
+            <option value="bills" className="text-black">Bills</option>
+            <option value="other" className="text-black">Other</option>
+          </select>
+
+          <input
+            type="text"
+            placeholder="Note"
+            value={form.note}
+            onChange={(e) =>
+              setForm({
+                ...form,
+                note: e.target.value,
+              })
+            }
+            className="
+              p-3
+              rounded-xl
+              bg-white/10
+              border border-white/10
+              outline-none
+            "
+          />
+
+          <button
+            className="
+              bg-green-500
+              hover:bg-green-600
+              rounded-xl
+              font-semibold
+              transition
+              px-4
+            "
+          >
+            {editId ? "Update Expense" : "Add Expense"}
+          </button>
+
+        </form>
+
+      </Card>
+
+    </div>
+
+    {/* FILTERS */}
+    <div className="mb-8">
+
+      <Card title="🔍 Filters">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+
+          <select
+            onChange={(e) =>
+              setFilter(e.target.value)
+            }
+            className="
+              p-3
+              rounded-xl
+              bg-white/10
+              border border-white/10
+              text-white
+            "
+          >
+            <option value="" className="text-black">All Categories</option>
+            <option value="food" className="text-black">Food</option>
+            <option value="transport" className="text-black">Transport</option>
+            <option value="shopping" className="text-black">Shopping</option>
+            <option value="bills" className="text-black">Bills</option>
+          </select>
+
+          <input
+            placeholder="Search expenses..."
+            onChange={(e) =>
+              setSearch(e.target.value)
+            }
+            className="
+              p-3
+              rounded-xl
+              bg-white/10
+              border border-white/10
+              outline-none
+            "
+          />
+
         </div>
-      {/* 📋 List */}
-      <Card title="Expense List" className="mt-6 ">
-        {filteredExpenses.length === 0 ? (
-          <p className="text-gray-400 text-center">
+
+      </Card>
+
+    </div>
+
+    {/* EXPENSE LIST */}
+    <Card title="📋 Expense List">
+
+      {filteredExpenses.length === 0 ? (
+
+        <div className="py-10 text-center">
+
+          <p className="text-5xl mb-3">
+            📭
+          </p>
+
+          <p className="text-gray-400">
             No expenses found
           </p>
-        ) : (
-          filteredExpenses.map((e) => (
+
+        </div>
+
+      ) : (
+
+        <div className="space-y-4 mt-4">
+
+          {filteredExpenses.map((e) => (
+
             <div
               key={e._id}
-              className="flex flex-col md:flex-row justify-between md:items-center 
-              bg-white/10 p-3 rounded mb-3 gap-2"
+              className="
+                bg-white/5
+                border border-white/10
+                rounded-2xl
+                p-4
+                flex
+                flex-col
+                sm:flex-row
+                justify-between
+                gap-4
+                hover:bg-white/10
+                transition
+              "
             >
+
               <div>
-                <p className="font-semibold">
-                  ₹{e.amount} • {e.category}
+
+                <h3 className="text-lg font-bold">
+                  ₹{e.amount}
+                </h3>
+
+                <p className="text-gray-400">
+                  {e.category}
                 </p>
-                <p className="text-sm text-gray-400">{e.note}</p>
+
+                <p className="mt-2">
+                  {e.note}
+                </p>
+
+                <p className="text-xs text-gray-500 mt-2">
+                  {new Date(
+                    e.date
+                  ).toLocaleDateString()}
+                </p>
+
               </div>
 
-              <div className="flex gap-3">
+              <div
+                className="
+                  flex
+                  gap-3
+                  sm:flex-col
+                  md:flex-row
+                  items-start
+                "
+              >
+
                 <button
                   onClick={() => handleEdit(e)}
-                  className="text-blue-400 text-sm"
+                  className="
+                    bg-blue-500
+                    hover:bg-blue-600
+                    px-4 py-2
+                    rounded-xl
+                    text-sm
+                  "
                 >
                   Edit
                 </button>
 
                 <button
-                  onClick={() => handleDelete(e._id)}
-                  className="text-red-400 text-sm"
+                  onClick={() =>
+                    handleDelete(e._id)
+                  }
+                  className="
+                    bg-red-500
+                    hover:bg-red-600
+                    px-4 py-2
+                    rounded-xl
+                    text-sm
+                  "
                 >
                   Delete
                 </button>
-              </div>
-            </div>
-          ))
-        )}
-      </Card>
 
-    </div>
-  );
+              </div>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      )}
+
+    </Card>
+
+  </div>
+);
 }

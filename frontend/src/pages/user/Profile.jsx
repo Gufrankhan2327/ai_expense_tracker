@@ -91,80 +91,155 @@ export default function Profile() {
 
   const initial = name?.charAt(0)?.toUpperCase();
 
-  return (
-    <div className="text-white ">
+return (
+  <div className="text-white p-4 sm:p-6">
 
-      {/* 🔹 Header */}
-      <h1 className="text-2xl sm:text-3xl font-bold mb-6">
+    {/* Header */}
+    <div className="mb-8">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2">
         👤 Profile
       </h1>
 
-      {/* 🔥 Main Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <p className="text-gray-400">
+        Manage your profile and account settings
+      </p>
+    </div>
 
-        {/* 🧑 Avatar */}
-        <Card className="flex flex-col items-center justify-center text-center p-6">
+    {/* Main Section */}
+    <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
 
-          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full 
-          bg-gradient-to-r from-green-400 to-emerald-600 
-          flex items-center justify-center text-2xl sm:text-3xl font-bold">
+      {/* Profile Card */}
+      <Card>
+        <div className="flex flex-col items-center text-center p-4">
+
+          <div
+            className="
+            w-24 h-24
+            md:w-28 md:h-28
+            lg:w-32 lg:h-32
+            rounded-full
+            bg-gradient-to-r
+            from-green-400
+            to-emerald-600
+            flex items-center justify-center
+            text-3xl md:text-4xl
+            font-bold
+          "
+          >
             {initial}
           </div>
 
-          <h2 className="mt-4 text-lg font-semibold">
+          <h2 className="mt-4 text-xl md:text-2xl font-bold">
             {name}
           </h2>
 
-          <p className="text-gray-400 text-sm break-all">
+          <p className="text-gray-400 text-sm break-all mt-2">
             {user.email}
           </p>
 
-        </Card>
+          <span
+            className="
+            mt-4
+            px-4 py-2
+            rounded-full
+            bg-green-500/20
+            border border-green-500/30
+            text-green-400
+            text-sm
+            font-semibold
+          "
+          >
+            USER
+          </span>
 
-        {/* 📝 Account Details */}
-        <Card title="Account Details" className="p-6">
+        </div>
+      </Card>
 
-          <div className="space-y-4">
+      {/* Account Details */}
+      <div className="xl:col-span-2">
 
-            {/* Name */}
+        <Card title="⚙️ Account Details">
+
+          <div className="space-y-5 mt-4">
+
             <div>
-              <label className="text-sm text-gray-400">Name</label>
+              <label className="text-sm text-gray-400">
+                Name
+              </label>
+
               <input
                 type="text"
                 value={name}
                 disabled={!isEditing}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full mt-1 px-3 py-2 rounded bg-white/10 border border-white/10 outline-none"
+                className="
+                w-full
+                mt-2
+                px-4
+                py-3
+                rounded-xl
+                bg-white/10
+                border border-white/10
+                focus:border-green-500
+                outline-none
+                transition
+              "
               />
             </div>
 
-            {/* Email */}
             <div>
-              <label className="text-sm text-gray-400">Email</label>
+              <label className="text-sm text-gray-400">
+                Email
+              </label>
+
               <input
                 type="text"
                 value={user.email || ""}
                 disabled
-                className="w-full mt-1 px-3 py-2 rounded bg-white/10 border border-white/10 opacity-60"
+                className="
+                w-full
+                mt-2
+                px-4
+                py-3
+                rounded-xl
+                bg-white/10
+                border border-white/10
+                opacity-60
+              "
               />
             </div>
 
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+            <div className="flex flex-col sm:flex-row gap-3">
 
               {isEditing ? (
                 <>
                   <button
                     onClick={handleSave}
                     disabled={loading}
-                    className="bg-green-500 px-4 py-2 rounded w-full sm:w-auto"
+                    className="
+                    bg-green-500
+                    hover:bg-green-600
+                    px-5 py-3
+                    rounded-xl
+                    font-semibold
+                    transition
+                    w-full sm:w-auto
+                  "
                   >
                     {loading ? "Saving..." : "Save"}
                   </button>
 
                   <button
                     onClick={() => setIsEditing(false)}
-                    className="bg-gray-500 px-4 py-2 rounded w-full sm:w-auto"
+                    className="
+                    bg-gray-500
+                    hover:bg-gray-600
+                    px-5 py-3
+                    rounded-xl
+                    font-semibold
+                    transition
+                    w-full sm:w-auto
+                  "
                   >
                     Cancel
                   </button>
@@ -172,7 +247,15 @@ export default function Profile() {
               ) : (
                 <button
                   onClick={() => setIsEditing(true)}
-                  className="bg-blue-500 px-4 py-2 rounded w-full sm:w-auto"
+                  className="
+                  bg-blue-500
+                  hover:bg-blue-600
+                  px-5 py-3
+                  rounded-xl
+                  font-semibold
+                  transition
+                  w-full sm:w-auto
+                "
                 >
                   Edit Profile
                 </button>
@@ -180,7 +263,16 @@ export default function Profile() {
 
               <button
                 onClick={handleLogout}
-                className="bg-red-500 px-4 py-2 rounded w-full sm:w-auto sm:ml-auto"
+                className="
+                bg-red-500
+                hover:bg-red-600
+                px-5 py-3
+                rounded-xl
+                font-semibold
+                transition
+                w-full sm:w-auto
+                sm:ml-auto
+              "
               >
                 Logout
               </button>
@@ -193,50 +285,75 @@ export default function Profile() {
 
       </div>
 
-      {/* 🔐 Password Section */}
-      <div className="mt-8 max-w-2xl mx-auto">
-        <Card title="Change Password" className="p-6">
+    </div>
 
-          <div className="flex flex-col gap-4">
+    {/* Password Section */}
+    <div className="mt-8">
 
-            <input
-              type="password"
-              placeholder="Old Password"
-              value={passwords.oldPassword}
-              onChange={(e) =>
-                setPasswords({
-                  ...passwords,
-                  oldPassword: e.target.value,
-                })
-              }
-              className="w-full p-2 rounded bg-white/10 border border-white/10"
-            />
+      <Card title="🔒 Change Password">
 
-            <input
-              type="password"
-              placeholder="New Password"
-              value={passwords.newPassword}
-              onChange={(e) =>
-                setPasswords({
-                  ...passwords,
-                  newPassword: e.target.value,
-                })
-              }
-              className="w-full p-2 rounded bg-white/10 border border-white/10"
-            />
+        <div className="grid md:grid-cols-2 gap-4 mt-4">
 
-            <button
-              onClick={handlePassword}
-              className="bg-purple-500 px-4 py-2 rounded w-full"
-            >
-              Update Password
-            </button>
+          <input
+            type="password"
+            placeholder="Old Password"
+            value={passwords.oldPassword}
+            onChange={(e) =>
+              setPasswords({
+                ...passwords,
+                oldPassword: e.target.value,
+              })
+            }
+            className="
+            p-3
+            rounded-xl
+            bg-white/10
+            border border-white/10
+            outline-none
+          "
+          />
 
-          </div>
+          <input
+            type="password"
+            placeholder="New Password"
+            value={passwords.newPassword}
+            onChange={(e) =>
+              setPasswords({
+                ...passwords,
+                newPassword: e.target.value,
+              })
+            }
+            className="
+            p-3
+            rounded-xl
+            bg-white/10
+            border border-white/10
+            outline-none
+          "
+          />
 
-        </Card>
-      </div>
+        </div>
+
+        <button
+          onClick={handlePassword}
+          className="
+          mt-5
+          bg-purple-500
+          hover:bg-purple-600
+          px-6 py-3
+          rounded-xl
+          font-semibold
+          transition
+          w-full md:w-auto
+        "
+        >
+          Update Password
+        </button>
+
+      </Card>
 
     </div>
-  );
+
+  </div>
+);
 }

@@ -74,133 +74,171 @@ export default function Budget() {
     alert("✅ Budget updated successfully");
   };
 
-  return (
-    <div className="text-white">
+ return (
+  <div className="text-white p-3 sm:p-4 md:p-6">
 
-      {/* 🔹 Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">
-           Budget Planner
-        </h1>
+    {/* Header */}
+    <div className="mb-6 md:mb-8">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
+        💰 Budget Planner
+      </h1>
 
-        <p className="text-gray-400">
-          Manage and track your monthly spending
-        </p>
-      </div>
+      <p className="text-gray-400 text-sm md:text-base">
+        Manage and track your monthly spending
+      </p>
+    </div>
 
-      {/* 🔥 Budget Overview */}
-      <Card className="mb-8">
+    {/* Budget Overview */}
+    <Card className="mb-6 md:mb-8">
 
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+      <div
+        className="
+          flex flex-col
+          lg:flex-row
+          lg:items-center
+          lg:justify-between
+          gap-6
+        "
+      >
 
-          {/* Left */}
-          <div>
+        {/* Left */}
+        <div>
+          <h2 className="text-xl md:text-2xl font-semibold mb-2">
+            Monthly Budget
+          </h2>
 
-            <h2 className="text-2xl font-semibold mb-2">
-              Monthly Budget
-            </h2>
+          <p className="text-gray-300 text-base md:text-lg">
+            ₹{total} spent out of ₹{budget}
+          </p>
+        </div>
 
-            <p className="text-gray-300 text-lg">
-              ₹{total} spent out of ₹{budget}
+        {/* Right */}
+        <div className="lg:text-right">
+
+          {remaining >= 0 ? (
+            <p className="text-green-400 text-base md:text-lg font-semibold">
+              ₹{remaining} Remaining
             </p>
-
-          </div>
-
-          {/* Right */}
-          <div className="text-right">
-
-            {remaining >= 0 ? (
-              <p className="text-green-400 text-lg font-semibold">
-                 ₹{remaining} Remaining
-              </p>
-            ) : (
-              <p className="text-red-400 text-lg font-semibold">
-                 Exceeded by ₹{Math.abs(remaining)}
-              </p>
-            )}
-
-          </div>
+          ) : (
+            <p className="text-red-400 text-base md:text-lg font-semibold">
+              Exceeded by ₹{Math.abs(remaining)}
+            </p>
+          )}
 
         </div>
-
-        {/* 🔥 Progress Bar */}
-        <div className="mt-6">
-
-          <div className="w-full bg-white/10 rounded-full h-5 overflow-hidden">
-
-            <div
-              className={`${progressColor} h-5 rounded-full transition-all duration-500`}
-              style={{ width: `${percent}%` }}
-            />
-
-          </div>
-
-          <div className="flex justify-between mt-2 text-sm text-gray-400">
-
-            <span>0%</span>
-
-            <span>{percent.toFixed(0)}%</span>
-
-            <span>100%</span>
-
-          </div>
-
-        </div>
-
-      </Card>
-
-      {/* 🔹 Budget Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 mt-8">
-
-        <Card
-          title="Total Spent"
-          value={`₹${total}`}
-        />
-
-        <Card
-          title="Budget Limit"
-          value={`₹${budget}`}
-        />
-
-        <Card
-          title="Remaining"
-          value={
-            remaining >= 0
-              ? `₹${remaining}`
-              : `-₹${Math.abs(remaining)}`
-          }
-        />
 
       </div>
 
-      {/* 🔥 Update Budget */}
-      <Card>
+      {/* Progress */}
+      <div className="mt-6">
 
-        <h2 className="text-xl font-semibold mb-5">
-          Update Monthly Budget
-        </h2>
+        <div className="w-full bg-white/10 rounded-full h-4 sm:h-5 overflow-hidden">
 
-        <div className="flex flex-col md:flex-row gap-4">
-
-          <input
-            type="number"
-            placeholder="Enter new budget"
-            value={newBudget}
-            onChange={(e) => setNewBudget(e.target.value)}
-            className="flex-1 bg-white/10 border border-white/10 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+          <div
+            className={`${progressColor} h-full rounded-full transition-all duration-500`}
+            style={{
+              width: `${Math.min(percent, 100)}%`,
+            }}
           />
 
-          <button
-            onClick={handleSaveBudget}
-            className="bg-blue-500 hover:bg-blue-600 transition px-6 py-3 rounded-xl font-semibold"
-          >
-            Save Budget
-          </button>
-
         </div>
 
-      </Card>
+        <div className="flex justify-between mt-2 text-xs sm:text-sm text-gray-400">
+          <span>0%</span>
+          <span>{percent.toFixed(0)}%</span>
+          <span>100%</span>
+        </div>
+
+      </div>
+
+    </Card>
+
+    {/* Stats Cards */}
+    <div
+      className="
+        grid
+        grid-cols-1
+        sm:grid-cols-2
+        xl:grid-cols-3
+        gap-5
+        mb-6 md:mb-8
+      "
+    >
+
+      <Card
+        title="💸 Total Spent"
+        value={`₹${total}`}
+      />
+
+      <Card
+        title="🎯 Budget Limit"
+        value={`₹${budget}`}
+      />
+
+      <Card
+        title="📊 Remaining"
+        value={
+          remaining >= 0
+            ? `₹${remaining}`
+            : `-₹${Math.abs(remaining)}`
+        }
+      />
 
     </div>
-  );
+
+    {/* Update Budget */}
+    <Card>
+
+      <h2 className="text-lg md:text-xl font-semibold mb-5">
+        Update Monthly Budget
+      </h2>
+
+      <div
+        className="
+          flex flex-col
+          sm:flex-row
+          gap-4
+        "
+      >
+
+        <input
+          type="number"
+          placeholder="Enter new budget"
+          value={newBudget}
+          onChange={(e) =>
+            setNewBudget(e.target.value)
+          }
+          className="
+            flex-1
+            bg-white/10
+            border border-white/10
+            rounded-xl
+            px-4 py-3
+            outline-none
+            focus:ring-2
+            focus:ring-blue-500
+          "
+        />
+
+        <button
+          onClick={handleSaveBudget}
+          className="
+            w-full sm:w-auto
+            bg-blue-500
+            hover:bg-blue-600
+            transition
+            px-6 py-3
+            rounded-xl
+            font-semibold
+          "
+        >
+          Save Budget
+        </button>
+
+      </div>
+
+    </Card>
+
+  </div>
+);
 }

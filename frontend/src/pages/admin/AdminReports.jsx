@@ -57,154 +57,111 @@ export default function AdminReports() {
     };
 
   return (
-    <div className="text-white p-6">
+  <div className="text-white p-4 sm:p-6">
 
-      {/* HEADER */}
-      <div className="flex justify-between items-center mb-8">
+    {/* HEADER */}
+    <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-4 mb-8">
 
-        <div>
-          <h2 className="text-5xl font-bold">
-            Admin Reports
-          </h2>
+      <div>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+          Admin Reports
+        </h2>
 
-          <p className="text-gray-400 mt-2">
-            Export platform analytics & reports
-          </p>
-        </div>
+        <p className="text-gray-400 mt-2 text-sm sm:text-base">
+          Export platform analytics & reports
+        </p>
+      </div>
 
-        <button
-          onClick={exportCSV}
-          className="
+      <button
+        onClick={exportCSV}
+        className="
+          w-full lg:w-auto
           bg-green-500
           hover:bg-green-600
-          px-5
-          py-3
+          px-5 py-3
           rounded-xl
           font-semibold
           transition
         "
-        >
-          📤 Export CSV
-        </button>
+      >
+        📤 Export CSV
+      </button>
 
-      </div>
+    </div>
 
-      {/* STATS */}
-      <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+    {/* STATS */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
 
-        <Card
-          title="Users"
-          value={analytics.totalUsers || 0}
-        />
+      <Card
+        title="👥 Users"
+        value={analytics.totalUsers || 0}
+      />
 
-        <Card
-          title="Transactions"
-          value={analytics.totalTransactions || 0}
-        />
+      <Card
+        title="💳 Transactions"
+        value={analytics.totalTransactions || 0}
+      />
 
-        <Card
-          title="Expenses"
-          value={`₹${analytics.totalExpenses || 0}`}
-        />
+      <Card
+        title="💰 Expenses"
+        value={`₹${analytics.totalExpenses || 0}`}
+      />
 
-        <Card
-          title="Avg/User"
-          value={`₹${analytics.averagePerUser || 0}`}
-        />
+      <Card
+        title="📊 Avg/User"
+        value={`₹${analytics.averagePerUser || 0}`}
+      />
 
-      </div>
+    </div>
 
-      {/* REPORT SUMMARY + EXPORT INFO */}
-      <div className="grid xl:grid-cols-3 gap-6">
+    {/* MAIN SECTION */}
+    <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
 
-        {/* REPORT SUMMARY */}
-        <div className="xl:col-span-2">
+      {/* REPORT SUMMARY */}
+      <div className="xl:col-span-2">
 
-          <Card title="📊 Report Summary">
+        <Card title="📊 Report Summary">
 
-            <div className="grid md:grid-cols-2 gap-4 mt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
 
-              <div className="bg-white/5 p-4 rounded-xl border border-white/10">
-                <p className="text-gray-400 text-sm">
-                  Total Users
-                </p>
-
-                <h3 className="text-2xl font-bold mt-1">
-                  {analytics.totalUsers}
-                </h3>
-              </div>
-
-              <div className="bg-white/5 p-4 rounded-xl border border-white/10">
-                <p className="text-gray-400 text-sm">
-                  Active Users
-                </p>
-
-                <h3 className="text-2xl font-bold mt-1">
-                  {analytics.activeUsers}
-                </h3>
-              </div>
-
-              <div className="bg-white/5 p-4 rounded-xl border border-white/10">
-                <p className="text-gray-400 text-sm">
-                  Transactions
-                </p>
-
-                <h3 className="text-2xl font-bold mt-1">
-                  {analytics.totalTransactions}
-                </h3>
-              </div>
-
-              <div className="bg-white/5 p-4 rounded-xl border border-white/10">
-                <p className="text-gray-400 text-sm">
-                  Total Expenses
-                </p>
-
-                <h3 className="text-2xl font-bold mt-1">
-                  ₹{analytics.totalExpenses}
-                </h3>
-              </div>
-
-            </div>
-
-          </Card>
-
-        </div>
-
-        {/* EXPORT INFO */}
-        <Card title="📁 Export Information">
-
-          <div className="space-y-4">
-
-            <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-              <p className="text-gray-300">
-                CSV file contains all users,
-                transactions and expense analytics.
+            <div className="bg-white/5 p-4 rounded-xl border border-white/10">
+              <p className="text-gray-400 text-sm">
+                Total Users
               </p>
-            </div>
 
-            <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-              <p className="text-gray-300">
-                Generated from live platform data.
-              </p>
-            </div>
-
-            <div
-              className="
-              bg-gradient-to-r
-              from-green-500/20
-              to-emerald-500/20
-              border border-green-500/20
-              rounded-xl
-              p-4
-            "
-            >
-              <h3 className="font-bold text-lg mb-2">
-                Report Status
+              <h3 className="text-xl sm:text-2xl font-bold mt-1">
+                {analytics.totalUsers || 0}
               </h3>
+            </div>
 
-              <p className="text-gray-300">
-                Ready for export.
+            <div className="bg-white/5 p-4 rounded-xl border border-white/10">
+              <p className="text-gray-400 text-sm">
+                Active Users
               </p>
+
+              <h3 className="text-xl sm:text-2xl font-bold mt-1">
+                {analytics.activeUsers || 0}
+              </h3>
+            </div>
+
+            <div className="bg-white/5 p-4 rounded-xl border border-white/10">
+              <p className="text-gray-400 text-sm">
+                Transactions
+              </p>
+
+              <h3 className="text-xl sm:text-2xl font-bold mt-1">
+                {analytics.totalTransactions || 0}
+              </h3>
+            </div>
+
+            <div className="bg-white/5 p-4 rounded-xl border border-white/10">
+              <p className="text-gray-400 text-sm">
+                Total Expenses
+              </p>
+
+              <h3 className="text-xl sm:text-2xl font-bold mt-1">
+                ₹{analytics.totalExpenses || 0}
+              </h3>
             </div>
 
           </div>
@@ -213,6 +170,49 @@ export default function AdminReports() {
 
       </div>
 
+      {/* EXPORT INFO */}
+      <Card title="📁 Export Information">
+
+        <div className="space-y-4">
+
+          <div className="bg-white/5 border border-white/10 rounded-xl p-4">
+            <p className="text-gray-300 text-sm sm:text-base">
+              CSV file contains all users,
+              transactions and expense analytics.
+            </p>
+          </div>
+
+          <div className="bg-white/5 border border-white/10 rounded-xl p-4">
+            <p className="text-gray-300 text-sm sm:text-base">
+              Generated from live platform data.
+            </p>
+          </div>
+
+          <div
+            className="
+              bg-gradient-to-r
+              from-green-500/20
+              to-emerald-500/20
+              border border-green-500/20
+              rounded-xl
+              p-4
+            "
+          >
+            <h3 className="font-bold text-lg mb-2">
+              Report Status
+            </h3>
+
+            <p className="text-gray-300 text-sm sm:text-base">
+              Ready for export.
+            </p>
+          </div>
+
+        </div>
+
+      </Card>
+
     </div>
-  );
+
+  </div>
+);
 }

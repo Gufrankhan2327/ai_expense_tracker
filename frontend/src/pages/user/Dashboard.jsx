@@ -55,55 +55,146 @@ export default function Dashboard() {
   // 🧾 Recent transactions
   const recent = expenses.slice(0, 5);
 
-  return (
-    <div className="text-white">
+return (
+  <div className="text-white p-4 sm:p-6">
 
-      {/* Header */}
-      <div className="mb-6">
-        <h1 className="text-2xl md:text-3xl font-bold">
-          Welcome Back
-        </h1>
-        <p className="text-gray-400 text-sm">
-          Here’s your financial overview
-        </p>
-      </div>
+    {/* HEADER */}
+    <div className="mb-8">
 
-      {/* Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
-        <Card title="Total Spent" value={`₹${total}`}/>
-        <Card title="Transactions" value={transactions}/>
-        <Card title="Top Category" value={topCategory} />
-        <Card title="Insight" value={insight}/>
-      </div>
+      <h1 className="text-3xl sm:text-4xl font-bold">
+         Welcome Back
+      </h1>
 
-      {/* Recent Activity */}
-      <Card>
-        <h2 className="mb-4 font-semibold text-lg">
-          Recent Transactions
-        </h2>
-
-        {recent.length === 0 ? (
-          <p className="text-gray-400">No transactions yet</p>
-        ) : (
-          recent.map((e) => (
-            <div
-              key={e._id}
-              className="flex justify-between items-center border-b border-white/10 py-2"
-            >
-              <div>
-                <p className="text-sm">{e.note}</p>
-                <p className="text-xs text-gray-400">
-                  {e.category}
-                </p>
-              </div>
-              <span className="text-sm font-semibold">
-                ₹{e.amount}
-              </span>
-            </div>
-          ))
-        )}
-      </Card>
+      <p className="text-gray-400 mt-2 text-sm sm:text-base">
+        Here’s your financial overview
+      </p>
 
     </div>
-  );
+
+    {/* STATS CARDS */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+
+      <Card
+        title="💰 Total Spent"
+        value={`₹${total}`}
+      />
+
+      <Card
+        title="💳 Transactions"
+        value={transactions}
+      />
+
+      <Card
+        title="🏆 Top Category"
+        value={topCategory}
+      />
+
+      <Card
+        title="🤖 Insight"
+        value={insight}
+      />
+
+    </div>
+
+    {/* RECENT TRANSACTIONS */}
+    <Card>
+
+      <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-6">
+
+        <h2 className="font-semibold text-xl">
+          📋 Recent Transactions
+        </h2>
+
+        <span
+          className="
+            text-sm
+            bg-green-500/20
+            text-green-400
+            px-3 py-1
+            rounded-full
+            w-fit
+          "
+        >
+          {recent.length} Records
+        </span>
+
+      </div>
+
+      {recent.length === 0 ? (
+
+        <div
+          className="
+            flex flex-col
+            items-center
+            justify-center
+            py-10
+            text-center
+          "
+        >
+          <p className="text-5xl mb-3">
+            📭
+          </p>
+
+          <p className="text-gray-400">
+            No transactions yet
+          </p>
+        </div>
+
+      ) : (
+
+        <div className="space-y-3">
+
+          {recent.map((e) => (
+
+            <div
+              key={e._id}
+              className="
+                flex
+                justify-between
+                items-center
+                bg-white/5
+                border border-white/10
+                rounded-xl
+                p-4
+                hover:bg-white/10
+                transition
+              "
+            >
+
+              <div className="min-w-0">
+
+                <p className="font-medium truncate">
+                  {e.note}
+                </p>
+
+                <p className="text-sm text-gray-400">
+                  {e.category}
+                </p>
+
+              </div>
+
+              <div className="text-right">
+
+                <p className="font-bold text-green-400">
+                  ₹{e.amount}
+                </p>
+
+                <p className="text-xs text-gray-500">
+                  {new Date(e.date).toLocaleDateString()}
+                </p>
+
+              </div>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      )}
+
+    </Card>
+
+  </div>
+);
 }

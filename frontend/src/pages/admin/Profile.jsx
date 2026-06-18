@@ -106,258 +106,249 @@ export default function AdminProfile() {
 
     const initial = name?.charAt(0)?.toUpperCase();
 
-    return (
-        <div className="text-white p-6">
+return (
+  <div className="text-white p-4 sm:p-6">
 
-            {/* HEADER */}
-            <div className="mb-8">
+    {/* HEADER */}
+    <div className="mb-8">
 
-                <h2 className="text-5xl font-bold">
-                    Admin Profile
-                </h2>
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+        Admin Profile
+      </h2>
 
-                <p className="text-gray-400 mt-2">
-                    Manage administrator account settings
-                </p>
+      <p className="text-gray-400 mt-2 text-sm sm:text-base">
+        Manage administrator account settings
+      </p>
 
-            </div>
+    </div>
 
-            {/* TOP SECTION */}
-            <div className="grid lg:grid-cols-3 gap-6">
+    {/* TOP SECTION */}
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-                {/* PROFILE CARD */}
-                <Card>
+      {/* PROFILE CARD */}
+      <Card>
 
-                    <div className="flex flex-col items-center text-center">
+        <div className="flex flex-col items-center text-center">
 
-                        <div
-                            className="
-                w-28 h-28
-                rounded-full
-                bg-gradient-to-r
-                from-indigo-500
-                to-purple-600
-                flex
-                items-center
-                justify-center
-                text-4xl
-                font-bold
-              "
-                        >
-                            {initial}
-                        </div>
-
-                        <h3 className="text-2xl font-bold mt-4">
-                            {name}
-                        </h3>
-
-                        <p className="text-gray-400">
-                            {user.email}
-                        </p>
-
-                        <span
-                            className="
-                mt-4
-                bg-green-500/20
-                border border-green-500/30
-                px-4 py-2
-                rounded-full
-                text-green-400
-                font-semibold
-              "
-                        >
-                            ADMIN
-                        </span>
-
-                    </div>
-
-                </Card>
-
-                {/* ACCOUNT DETAILS */}
-                <div className="lg:col-span-2">
-
-                    <Card title="⚙️ Account Details">
-
-                        <div className="space-y-4 mt-4">
-
-                            <div>
-                                <label className="text-gray-400">
-                                    Name
-                                </label>
-
-                                <input
-                                    type="text"
-                                    value={name}
-                                    disabled={!isEditing}
-                                    onChange={(e) =>
-                                        setName(e.target.value)
-                                    }
-                                    className="
-                    w-full
-                    mt-2
-                    p-3
-                    rounded-xl
-                    bg-white/10
-                    border border-white/10
-                  "
-                                />
-                            </div>
-
-                            <div>
-                                <label className="text-gray-400">
-                                    Email
-                                </label>
-
-                                <input
-                                    type="text"
-                                    value={user.email || ""}
-                                    disabled
-                                    className="
-                    w-full
-                    mt-2
-                    p-3
-                    rounded-xl
-                    bg-white/10
-                    border border-white/10
-                    opacity-60
-                  "
-                                />
-                            </div>
-
-                            <div className="flex gap-3 flex-wrap">
-
-                                {isEditing ? (
-                                    <>
-                                        <button
-                                            onClick={handleSave}
-                                            disabled={loading}
-                                            className="
-                        bg-green-500
-                        px-5
-                        py-2
-                        rounded-xl
-                      "
-                                        >
-                                            {loading
-                                                ? "Saving..."
-                                                : "Save"}
-                                        </button>
-
-                                        <button
-                                            onClick={() =>
-                                                setIsEditing(false)
-                                            }
-                                            className="
-                        bg-gray-500
-                        px-5
-                        py-2
-                        rounded-xl
-                      "
-                                        >
-                                            Cancel
-                                        </button>
-                                    </>
-                                ) : (
-                                    <button
-                                        onClick={() =>
-                                            setIsEditing(true)
-                                        }
-                                        className="
-                      bg-blue-500
-                      px-5
-                      py-2
-                      rounded-xl
-                    "
-                                    >
-                                        Edit Profile
-                                    </button>
-                                )}
-
-                                <button
-                                    onClick={handleLogout}
-                                    className="
-                    bg-red-500
-                    px-5
-                    py-2
-                    rounded-xl
-                    ml-auto
-                  "
-                                >
-                                    Logout
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </Card>
-
-                </div>
-
-            </div>
-
-            {/* PASSWORD */}
-            <div className="mt-8">
-
-                <Card title="🔒 Change Password">
-
-                    <div className="grid md:grid-cols-2 gap-4 mt-4">
-
-                        <input
-                            type="password"
-                            placeholder="Old Password"
-                            value={passwords.oldPassword}
-                            onChange={(e) =>
-                                setPasswords({
-                                    ...passwords,
-                                    oldPassword: e.target.value,
-                                })
-                            }
-                            className="
-                p-3
-                rounded-xl
-                bg-white/10
-                border border-white/10
-              "
-                        />
-
-                        <input
-                            type="password"
-                            placeholder="New Password"
-                            value={passwords.newPassword}
-                            onChange={(e) =>
-                                setPasswords({
-                                    ...passwords,
-                                    newPassword: e.target.value,
-                                })
-                            }
-                            className="
-                p-3
-                rounded-xl
-                bg-white/10
-                border border-white/10
-              "
-                        />
-
-                    </div>
-
-                    <button
-                        onClick={handlePassword}
-                        className="
-              mt-4
-              bg-purple-500
-              px-6
-              py-3
-              rounded-xl
+          <div
+            className="
+              w-24 h-24 sm:w-28 sm:h-28
+              rounded-full
+              bg-gradient-to-r
+              from-indigo-500
+              to-purple-600
+              flex items-center justify-center
+              text-3xl sm:text-4xl
+              font-bold
             "
-                    >
-                        Update Password
-                    </button>
+          >
+            {initial}
+          </div>
 
-                </Card>
+          <h3 className="text-xl sm:text-2xl font-bold mt-4">
+            {name}
+          </h3>
 
-            </div>
+          <p className="text-gray-400 break-all">
+            {user.email}
+          </p>
+
+          <span
+            className="
+              mt-4
+              bg-green-500/20
+              border border-green-500/30
+              px-4 py-2
+              rounded-full
+              text-green-400
+              font-semibold
+            "
+          >
+            ADMIN
+          </span>
 
         </div>
-    );
+
+      </Card>
+
+      {/* ACCOUNT DETAILS */}
+      <div className="lg:col-span-2">
+
+        <Card title="⚙️ Account Details">
+
+          <div className="space-y-4 mt-4">
+
+            <div>
+              <label className="text-gray-400">
+                Name
+              </label>
+
+              <input
+                type="text"
+                value={name}
+                disabled={!isEditing}
+                onChange={(e) => setName(e.target.value)}
+                className="
+                  w-full
+                  mt-2
+                  p-3
+                  rounded-xl
+                  bg-white/10
+                  border border-white/10
+                "
+              />
+            </div>
+
+            <div>
+              <label className="text-gray-400">
+                Email
+              </label>
+
+              <input
+                type="text"
+                value={user.email || ""}
+                disabled
+                className="
+                  w-full
+                  mt-2
+                  p-3
+                  rounded-xl
+                  bg-white/10
+                  border border-white/10
+                  opacity-60
+                "
+              />
+            </div>
+
+            {/* BUTTONS */}
+            <div className="flex flex-col sm:flex-row gap-3">
+
+              {isEditing ? (
+                <>
+                  <button
+                    onClick={handleSave}
+                    disabled={loading}
+                    className="
+                      bg-green-500
+                      px-5 py-3
+                      rounded-xl
+                      w-full sm:w-auto
+                    "
+                  >
+                    {loading ? "Saving..." : "Save"}
+                  </button>
+
+                  <button
+                    onClick={() => setIsEditing(false)}
+                    className="
+                      bg-gray-500
+                      px-5 py-3
+                      rounded-xl
+                      w-full sm:w-auto
+                    "
+                  >
+                    Cancel
+                  </button>
+                </>
+              ) : (
+                <button
+                  onClick={() => setIsEditing(true)}
+                  className="
+                    bg-blue-500
+                    px-5 py-3
+                    rounded-xl
+                    w-full sm:w-auto
+                  "
+                >
+                  Edit Profile
+                </button>
+              )}
+
+              <button
+                onClick={handleLogout}
+                className="
+                  bg-red-500
+                  px-5 py-3
+                  rounded-xl
+                  w-full sm:w-auto
+                  sm:ml-auto
+                "
+              >
+                Logout
+              </button>
+
+            </div>
+
+          </div>
+
+        </Card>
+
+      </div>
+
+    </div>
+
+    {/* PASSWORD SECTION */}
+    <div className="mt-8">
+
+      <Card title="🔒 Change Password">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+
+          <input
+            type="password"
+            placeholder="Old Password"
+            value={passwords.oldPassword}
+            onChange={(e) =>
+              setPasswords({
+                ...passwords,
+                oldPassword: e.target.value,
+              })
+            }
+            className="
+              p-3
+              rounded-xl
+              bg-white/10
+              border border-white/10
+            "
+          />
+
+          <input
+            type="password"
+            placeholder="New Password"
+            value={passwords.newPassword}
+            onChange={(e) =>
+              setPasswords({
+                ...passwords,
+                newPassword: e.target.value,
+              })
+            }
+            className="
+              p-3
+              rounded-xl
+              bg-white/10
+              border border-white/10
+            "
+          />
+
+        </div>
+
+        <button
+          onClick={handlePassword}
+          className="
+            mt-4
+            w-full md:w-auto
+            bg-purple-500
+            px-6 py-3
+            rounded-xl
+          "
+        >
+          Update Password
+        </button>
+
+      </Card>
+
+    </div>
+
+  </div>
+);
 }
