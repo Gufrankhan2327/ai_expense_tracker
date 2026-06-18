@@ -1,12 +1,12 @@
-# AI_Expense_Tracker
+# 💸 AI Expense Tracker
 
-A modern AI*powered Expense Tracker built using React, Node.js, Express.js, MongoDB Atlas, and JWT Authentication. The application provides real*time expense management, analytics dashboards, budget tracking, CSV report generation, and role*based access for Users and Admins.
+A modern AI-powered Expense Tracker built using React, Node.js, Express.js, MongoDB Atlas, and JWT Authentication. The application provides real-time expense management, analytics dashboards, budget tracking, CSV report generation, and role-based access for Users and Admins.
 
 ✨ Highlights
 
 ✅ JWT Authentication & Authorization
 
-✅ Role*Based Access Control (User & Admin)
+✅ Role-Based Access Control (User & Admin)
 
 ✅ Expense Management (Add, Edit, Delete)
 
@@ -26,7 +26,7 @@ A modern AI*powered Expense Tracker built using React, Node.js, Express.js, Mong
 
 ✅ Protected Routes
 
-✅ Real*Time Expense Insights
+✅ Real-Time Expense Insights
 
 
 
@@ -138,11 +138,16 @@ The AI Expense Tracker helps users manage daily expenses efficiently while provi
 
 ## 🌐 Live Demo
 
-Frontend:
-<https://your-frontend-url.onrender.com>
+Frontend: 
+<https://ai-expense-tracker-68bj.onrender.com>
 
 Backend API:
-<https://your-backend-url.onrender.com>
+<https://ai-expense-tracker-backend-rvb8.onrender.com>
+
+## 🔗 Repository
+
+GitHub Repository:
+<https://github.com/Gufrankhan2327/ai_expense_tracker>
 
 ## 🛠️ Tech Stack
 
@@ -260,7 +265,7 @@ Login → JWT Token → Protected Routes → Role Verification → User/Admin Da
 ### Clone Repository
 
 bash
-git clone <https://github.com/your-username/ai-expense-tracker.git>
+git clone <https://github.com/Gufrankhan2327/ai-expense-tracker.git>
 cd ai-expense-tracker
 
 ### Backend Setup
@@ -300,7 +305,7 @@ JWT_SECRET=your_secret_key
 ## 🌐 Deployment
 
 | Part     | Platform      |
-
+|----------|---------------|
 | Frontend | Render        |
 | Backend  | Render        |
 | Database | MongoDB Atlas |
@@ -351,10 +356,29 @@ JWT_SECRET=your_secret_key
 * 🤖 Advanced AI Insights
 * 🌍 Multi-currency Support
 
+## 🎯 Learning Outcomes
+
+This project demonstrates:
+
+* MERN Stack Development
+* JWT Authentication
+* Role-Based Access Control
+* MongoDB Atlas Integration
+* REST API Development
+* Analytics Dashboard Development
+* Responsive UI Design
+* Deployment using Render
+
 ## 👨‍💻 Author
 
 **Gufran Khan**
 Full Stack Developer (MERN + AI)
+
+## 📬 Contact
+
+GitHub: <https://github.com/Gufrankhan2327>
+
+Built with ❤️ by Gufran Khan
 
 ## ⭐ Show Your Support
 
